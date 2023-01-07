@@ -5,9 +5,11 @@ const dotenv = require("dotenv");
 
 dotenv.config({ path: "./config.env" });
 
+const DB = process.env.DATABASE.replace("<password>", process.env.PASSWORD);
+
 mongoose.set("strictQuery", false);
-mongoose.connect(process.env.DATABASE, () => {
-  console.log("Database connection succesful");
+mongoose.connect(DB, () => {
+  console.log("DB connection success");
 });
 
 app.listen(5000, () => {
