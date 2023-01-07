@@ -1,0 +1,23 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  height: 100vh;
+  width: 100vw;
+  background-color: #ccc;
+}
+
+@import "./App";
+@import "./pages/Mainpage";
+@import "./components/StatisticsView";
+@import "./components/ListView";
+@import "./components/RenderMap";
+@import "./components/List";

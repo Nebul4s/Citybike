@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const express = require("express");
 const app = express();
 const dotenv = require("dotenv");
+const Journey = require("./model/JourneySchema");
 
 dotenv.config({ path: "./config.env" });
 

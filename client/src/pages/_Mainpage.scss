@@ -1,0 +1,11 @@
+.Mainpage {
+  display: flex;
+  position: relative;
+  .ListView {
+    flex: 0.4;
+  }
+
+  .RenderMap {
+    flex: 0.6;
+  }
+}
