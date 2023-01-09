@@ -15,6 +15,7 @@ body {
   background-color: #ccc;
 }
 
+@import "./Variables";
 @import "./App";
 @import "./pages/Mainpage";
 @import "./components/StatisticsView";
