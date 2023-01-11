@@ -1,12 +1,14 @@
 @import "../Mixins";
+@import "../Variables";
 .List {
   flex: 0.9;
-  background-color: red;
+  background-color: $color4;
   width: 100%;
   li {
     @include flexSpaceBetween;
     padding: 1.2rem;
-    background-color: #ccc;
+    background-color: $color1;
+    border-bottom: 1px solid $color5;
     .stations {
       display: flex;
       flex-direction: column;

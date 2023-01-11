@@ -1,8 +1,9 @@
 @import "../Mixins";
-
+@import "../Variables";
 .StatisticsView {
   position: absolute;
-  background-color: #555;
+  background-color: $color5;
+  color: $color1;
   right: 0;
   top: 0;
   width: 90%;
@@ -25,11 +26,18 @@
     padding: 1.2rem;
     transition: all 0.2s;
     cursor: pointer;
+    svg {
+      fill: $color1;
+    }
     span {
       font-size: 2rem;
     }
     &:hover {
-      background-color: #aaa;
+      background-color: $color2;
+      color: $color5;
+      svg {
+        fill: $color5;
+      }
     }
   }
 }

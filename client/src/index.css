@@ -61,7 +61,8 @@ body {
 
 .StatisticsView {
   position: absolute;
-  background-color: #555;
+  background-color: #251429;
+  color: #c3d1e1;
   right: 0;
   top: 0;
   width: 90%;
@@ -90,11 +91,18 @@ body {
   transition: all 0.2s;
   cursor: pointer;
 }
+.StatisticsView .close-stats svg {
+  fill: #c3d1e1;
+}
 .StatisticsView .close-stats span {
   font-size: 2rem;
 }
 .StatisticsView .close-stats:hover {
-  background-color: #aaa;
+  background-color: #ecb446;
+  color: #251429;
+}
+.StatisticsView .close-stats:hover svg {
+  fill: #251429;
 }
 
 .stats-open__statView {
@@ -121,19 +129,20 @@ body {
   cursor: pointer;
   position: relative;
   transition: all 0.2s ease-out;
-  background-color: #b0b3b8;
+  background-color: #251429;
+  color: #c3d1e1;
 }
 .ListView .btn-container li:hover {
-  background-color: #3a3b3c;
-  color: #2374e1;
+  background-color: #9e7cb1;
+  color: #251429;
 }
 .ListView .btn-container li .active {
   background-color: #3a3b3c;
-  color: #2374e1;
+  color: #757782;
 }
 .ListView .btn-container li::before {
   content: "";
-  background-color: #2374e1;
+  background-color: #251429;
   width: 100%;
   height: 0.5rem;
   bottom: 0;
@@ -172,13 +181,13 @@ body {
   outline: none;
 }
 .ListView .search--container .filter--container {
-  background-color: #3a3b3c;
+  background-color: #251429;
   padding: 0.2rem;
   border-radius: 1rem;
   margin-right: 1rem;
 }
 .ListView .search--container .filter--container svg {
-  fill: #ccc;
+  fill: #c3d1e1;
   scale: 0.8;
 }
 .ListView .pagination {
@@ -188,10 +197,14 @@ body {
   align-items: center;
   justify-content: space-evenly;
   font-size: 1.6rem;
+  background-color: #ecb446;
 }
 .ListView .pagination div {
-  background-color: #555;
+  background-color: #251429;
   border-radius: 50%;
+}
+.ListView .pagination div svg {
+  fill: #c3d1e1;
 }
 
 .RenderMap {
@@ -203,18 +216,19 @@ body {
   flex: 0.7;
 }
 .RenderMap .location--details__container {
-  background-color: #333;
+  background-color: #251429;
   flex: 0.3;
   padding: 1.2rem;
 }
 .RenderMap .location--details__container h2 {
   font-size: 2.4rem;
   text-align: center;
+  color: #c3d1e1;
 }
 
 .List {
   flex: 0.9;
-  background-color: red;
+  background-color: #757782;
   width: 100%;
 }
 .List li {
@@ -222,7 +236,8 @@ body {
   align-items: center;
   justify-content: space-between;
   padding: 1.2rem;
-  background-color: #ccc;
+  background-color: #c3d1e1;
+  border-bottom: 1px solid #251429;
 }
 .List li .stations {
   display: flex;
