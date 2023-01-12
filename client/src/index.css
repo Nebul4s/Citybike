@@ -72,6 +72,9 @@ body {
   transition: all 0.4s ease-out;
   z-index: 9999;
 }
+.StatisticsView.stats-open__statView {
+  transform: scaleX(1);
+}
 .StatisticsView .stats-header {
   padding: 0.4rem 1.8rem;
   display: flex;
@@ -105,10 +108,6 @@ body {
   fill: #251429;
 }
 
-.stats-open__statView {
-  transform: scaleX(1);
-}
-
 .ListView {
   display: flex;
   flex-direction: column;
@@ -132,13 +131,21 @@ body {
   background-color: #251429;
   color: #c3d1e1;
 }
-.ListView .btn-container li:hover {
+.ListView .btn-container li.active {
   background-color: #9e7cb1;
   color: #251429;
 }
-.ListView .btn-container li .active {
-  background-color: #3a3b3c;
-  color: #757782;
+.ListView .btn-container li.active span {
+  background-color: #251429;
+  width: 100%;
+  height: 0.5rem;
+  bottom: 0;
+  left: 0;
+  position: absolute;
+}
+.ListView .btn-container li:hover {
+  background-color: #9e7cb1;
+  color: #251429;
 }
 .ListView .btn-container li::before {
   content: "";
@@ -167,6 +174,7 @@ body {
   border: 1px solid #ccc;
   border-radius: 5rem;
   padding: 0 1.2rem;
+  margin-left: 0.2rem;
 }
 .ListView .search--container .search--input__container svg {
   transform: scale(0.7);
@@ -202,9 +210,17 @@ body {
 .ListView .pagination div {
   background-color: #251429;
   border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.15s;
 }
 .ListView .pagination div svg {
   fill: #c3d1e1;
+}
+.ListView .pagination div:hover {
+  background-color: #9e7cb1;
+}
+.ListView .pagination div:hover svg {
+  fill: #251429;
 }
 
 .RenderMap {
@@ -231,6 +247,16 @@ body {
   background-color: #757782;
   width: 100%;
 }
+.List.loading--container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.List.error--container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .List li {
   display: flex;
   align-items: center;
@@ -238,6 +264,15 @@ body {
   padding: 1.2rem;
   background-color: #c3d1e1;
   border-bottom: 1px solid #251429;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.List li:hover {
+  background-color: #251429;
+  color: #c3d1e1;
+}
+.List li:hover .station--name {
+  color: #c3d1e1 !important;
 }
 .List li .stations {
   display: flex;
@@ -285,4 +320,138 @@ body {
 .List li .distance--container svg {
   transform: scale(0.6);
   fill: #777;
+}
+
+.animation--container {
+  position: relative;
+  width: 10rem;
+  height: 5rem;
+}
+.animation--container svg {
+  fill: #251429;
+}
+.animation--container .large {
+  width: 4.8rem;
+  height: 4.8rem;
+  position: absolute;
+  left: 5%;
+  top: 0;
+  -webkit-animation: rotateRight 6s linear infinite;
+          animation: rotateRight 6s linear infinite;
+}
+.animation--container .medium {
+  width: 3.6rem;
+  height: 3.6rem;
+  position: absolute;
+  right: 23%;
+  top: 70%;
+  -webkit-animation: rotateLeft 6s linear infinite;
+          animation: rotateLeft 6s linear infinite;
+}
+.animation--container .small {
+  width: 2.4rem;
+  height: 2.4rem;
+  position: absolute;
+  left: 25%;
+  top: 123%;
+  -webkit-animation: rotateRight 6s linear infinite;
+          animation: rotateRight 6s linear infinite;
+}
+.animation--container .loading--text__container {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.2rem;
+  position: absolute;
+  font-size: 1.8rem;
+  color: #ecb446;
+  top: 190%;
+  left: -5%;
+}
+.animation--container .loading--text__container .loading--dots {
+  display: flex;
+  margin-bottom: 0.4rem;
+  gap: 0.4rem;
+}
+.animation--container .loading--text__container .loading--dots span {
+  background-color: #ecb446;
+  width: 0.8rem;
+  height: 0.8rem;
+  display: block;
+  border-radius: 50%;
+  -webkit-animation: dots 1.5s ease-out infinite;
+          animation: dots 1.5s ease-out infinite;
+}
+.animation--container .loading--text__container .loading--dots .dot--one {
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
+}
+.animation--container .loading--text__container .loading--dots .dot--two {
+  -webkit-animation-delay: 0.2s;
+          animation-delay: 0.2s;
+}
+.animation--container .loading--text__container .loading--dots .dot--three {
+  -webkit-animation-delay: 0.4s;
+          animation-delay: 0.4s;
+}
+
+@-webkit-keyframes rotateRight {
+  from {
+    transform: rotateZ(0deg);
+  }
+  to {
+    transform: rotateZ(360deg);
+  }
+}
+
+@keyframes rotateRight {
+  from {
+    transform: rotateZ(0deg);
+  }
+  to {
+    transform: rotateZ(360deg);
+  }
+}
+@-webkit-keyframes rotateLeft {
+  from {
+    transform: rotateZ(360deg);
+  }
+  to {
+    transform: rotateZ(0deg);
+  }
+}
+@keyframes rotateLeft {
+  from {
+    transform: rotateZ(360deg);
+  }
+  to {
+    transform: rotateZ(0deg);
+  }
+}
+@-webkit-keyframes dots {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes dots {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.ErrorMessage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  color: #ecb446;
+  fill: #ecb446;
+}
+.ErrorMessage span {
+  font-size: 1.8rem;
+  width: 80%;
 }/*# sourceMappingURL=index.css.map */

@@ -1,19 +1,13 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { useFetch } from "../hooks/useFetch";
 
 import ListView from "../components/ListView";
 import RenderMap from "../components/RenderMap";
 import StatisticsView from "../components/StatisticsView";
 
 const Mainpage = () => {
-  const [data, setData] = useState([]);
-
-  useEffect(() => {
-    const fetchDevData = async () => {
-      const data = await fetch("http://localhost:5000/dev");
-      console.log(data);
-    };
-    fetchDevData();
-  }, []);
+  const [mapData, setMapData] = useState(null);
+  const { data, error } = useFetch("journeys", "dev");
 
   const handleStyle = () => {
     document
@@ -25,8 +19,13 @@ const Mainpage = () => {
   return (
     <div className="Mainpage">
       <div className="overlay"></div>
-      <RenderMap />
-      <ListView test={handleStyle} />
+      <RenderMap mapData={mapData} />
+      <ListView
+        test={handleStyle}
+        data={data}
+        error={error}
+        setMapData={setMapData}
+      />
       <StatisticsView test={handleStyle} />
     </div>
   );
