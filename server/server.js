@@ -1,8 +1,10 @@
 const mongoose = require("mongoose");
 const express = require("express");
+const cors = require("cors");
 const app = express();
 const dotenv = require("dotenv");
-const Journey = require("./model/JourneySchema");
+const journeyRouter = require("./routes/journeyRoutes");
+const locationRouter = require("./routes/locationRoutes");
 
 dotenv.config({ path: "./config.env" });
 
@@ -13,17 +15,13 @@ mongoose.connect(DB, () => {
   console.log("DB connection success");
 });
 
-app.get("/dev", async (req, res) => {
-  try {
-    const query = await Journey.find({ DurationSec: { $lt: 12 } });
-    res.send({
-      status: 200,
-      data: query,
-    });
-  } catch (err) {
-    console.log(err);
-  }
-});
+//Other Middleware
+app.use(cors());
+app.use(express.json());
+
+//Routers
+app.use("/journeys", journeyRouter);
+app.use("/locations", locationRouter);
 
 app.listen(5000, () => {
   console.log("Server started on port 5000");
