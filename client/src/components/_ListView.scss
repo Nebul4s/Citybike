@@ -111,9 +111,85 @@
       }
     }
     .results--page__container {
-      select {
-        padding: 1.2rem;
-        font-size: 1.8rem;
+      position: relative;
+      cursor: pointer;
+
+      .results--page__heading {
+        @include flexCenter;
+
+        padding: 0 1.2rem;
+        background-color: $color5;
+        border-radius: 1rem;
+        overflow: hidden;
+        transition: border-radius 0.3s ease-out;
+
+        &.dropdown--open {
+          border-radius: 0;
+          .svg--container {
+            svg {
+              transform: rotate(180deg);
+            }
+          }
+        }
+        .svg--container {
+          width: 3.2rem;
+          height: 4.8rem;
+          svg {
+            transform: rotate(0);
+            fill: $color1;
+            transition: transform 0.3s ease-out;
+          }
+        }
+        span {
+          font-size: 1.8rem;
+          color: $color1;
+        }
+      }
+      .dropdown--content {
+        list-style: none;
+        width: 100%;
+        background-color: $color3;
+
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0%;
+
+        &.dropdown--open {
+          display: block;
+          animation: growDown 0.3s ease-in-out forwards;
+          transform-origin: top center;
+          li {
+            display: block;
+            opacity: 1;
+          }
+        }
+
+        li {
+          &.active {
+            .li--flex {
+              svg {
+                transform: scale(0.7);
+              }
+            }
+          }
+          .li--flex {
+            @include flexSpaceBetween;
+            width: 100%;
+            svg {
+              transform: scale(0);
+            }
+          }
+          font-size: 1.8rem;
+          padding: 1rem;
+          border-bottom: 1px solid white;
+
+          display: none;
+          opacity: 0;
+          &:hover {
+            background-color: $color2;
+          }
+        }
       }
     }
   }
@@ -143,5 +219,17 @@
         }
       }
     }
+  }
+}
+
+@keyframes growDown {
+  0% {
+    transform: scaleY(0);
+  }
+  80% {
+    transform: scaleY(1.1);
+  }
+  100% {
+    transform: scaleY(1);
   }
 }

@@ -54,6 +54,8 @@ const Mainpage = () => {
         error={error}
         setMapData={setMapData}
         page={page}
+        setLimit={setLimit}
+        limit={limit}
         setPage={setPage}
         setCollection={setCollection}
         collection={collection}

@@ -4,6 +4,7 @@
 .List {
   flex: 0.9;
   background-color: $color4;
+  overflow-y: auto;
   width: 100%;
 
   .loading--container {
