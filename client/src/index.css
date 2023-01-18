@@ -182,143 +182,6 @@ body {
 .ListView .btn-container li:hover::before {
   transform: scaleX(1);
 }
-.ListView .search--container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.8rem 0rem;
-  background-color: #f9fafc;
-}
-.ListView .search--container .search--input__container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border: 1px solid rgba(37, 20, 41, 0.5);
-  border-radius: 5rem;
-  margin-left: 0.2rem;
-  overflow: hidden;
-}
-.ListView .search--container .search--input__container .search--svg__container {
-  background-color: #251429;
-  border-radius: 50%;
-  padding: 0.2rem;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.15s;
-}
-.ListView .search--container .search--input__container .search--svg__container svg {
-  fill: #c3d1e1;
-  transform: scale(0.7);
-}
-.ListView .search--container .search--input__container .search--svg__container:hover {
-  background-color: #9e7cb1;
-}
-.ListView .search--container .search--input__container .search--svg__container:hover svg {
-  fill: #251429;
-}
-.ListView .search--container input {
-  background: none;
-  border: none;
-  padding: 0.6rem;
-  font-size: 1.8rem;
-}
-.ListView .search--container input:focus {
-  outline: none;
-}
-.ListView .search--container .filter--container {
-  background-color: #251429;
-  padding: 0.2rem;
-  border-radius: 1rem;
-  margin-right: 1rem;
-  cursor: pointer;
-  transition: all 0.15s;
-}
-.ListView .search--container .filter--container svg {
-  fill: #c3d1e1;
-  scale: 0.8;
-}
-.ListView .search--container .filter--container:hover {
-  background-color: #9e7cb1;
-}
-.ListView .search--container .filter--container:hover svg {
-  fill: #251429;
-}
-.ListView .search--container .results--page__container {
-  position: relative;
-  cursor: pointer;
-}
-.ListView .search--container .results--page__container .results--page__heading {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 1.2rem;
-  background-color: #251429;
-  border-radius: 1rem;
-  overflow: hidden;
-  transition: border-radius 0.3s ease-out;
-}
-.ListView .search--container .results--page__container .results--page__heading.dropdown--open {
-  border-radius: 0;
-}
-.ListView .search--container .results--page__container .results--page__heading.dropdown--open .svg--container svg {
-  transform: rotate(180deg);
-}
-.ListView .search--container .results--page__container .results--page__heading .svg--container {
-  width: 3.2rem;
-  height: 4.8rem;
-}
-.ListView .search--container .results--page__container .results--page__heading .svg--container svg {
-  transform: rotate(0);
-  fill: #c3d1e1;
-  transition: transform 0.3s ease-out;
-}
-.ListView .search--container .results--page__container .results--page__heading span {
-  font-size: 1.8rem;
-  color: #c3d1e1;
-}
-.ListView .search--container .results--page__container .dropdown--content {
-  list-style: none;
-  width: 100%;
-  background-color: #9e7cb1;
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 0%;
-}
-.ListView .search--container .results--page__container .dropdown--content.dropdown--open {
-  display: block;
-  -webkit-animation: growDown 0.3s ease-in-out forwards;
-          animation: growDown 0.3s ease-in-out forwards;
-  transform-origin: top center;
-}
-.ListView .search--container .results--page__container .dropdown--content.dropdown--open li {
-  display: block;
-  opacity: 1;
-}
-.ListView .search--container .results--page__container .dropdown--content li {
-  font-size: 1.8rem;
-  padding: 1rem;
-  border-bottom: 1px solid white;
-  display: none;
-  opacity: 0;
-}
-.ListView .search--container .results--page__container .dropdown--content li.active .li--flex svg {
-  transform: scale(0.7);
-}
-.ListView .search--container .results--page__container .dropdown--content li .li--flex {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-}
-.ListView .search--container .results--page__container .dropdown--content li .li--flex svg {
-  transform: scale(0);
-}
-.ListView .search--container .results--page__container .dropdown--content li:hover {
-  background-color: #ecb446;
-}
 .ListView .pagination {
   padding: 0.4rem;
   flex: 0.05;
@@ -372,6 +235,144 @@ body {
     transform: scaleY(1);
   }
 }
+.search--container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.8rem 0rem;
+  background-color: #f9fafc;
+}
+.search--container .search--input__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid rgba(37, 20, 41, 0.5);
+  border-radius: 5rem;
+  margin-left: 0.2rem;
+  overflow: hidden;
+}
+.search--container .search--input__container .search--svg__container {
+  background-color: #251429;
+  border-radius: 50%;
+  padding: 0.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s;
+}
+.search--container .search--input__container .search--svg__container svg {
+  fill: #c3d1e1;
+  transform: scale(0.7);
+}
+.search--container .search--input__container .search--svg__container:hover {
+  background-color: #9e7cb1;
+}
+.search--container .search--input__container .search--svg__container:hover svg {
+  fill: #251429;
+}
+.search--container input {
+  background: none;
+  border: none;
+  padding: 0.6rem;
+  font-size: 1.8rem;
+}
+.search--container input:focus {
+  outline: none;
+}
+.search--container .filter--container {
+  background-color: #251429;
+  padding: 0.2rem;
+  border-radius: 1rem;
+  margin-right: 1rem;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.search--container .filter--container svg {
+  fill: #c3d1e1;
+  scale: 0.8;
+}
+.search--container .filter--container:hover {
+  background-color: #9e7cb1;
+}
+.search--container .filter--container:hover svg {
+  fill: #251429;
+}
+.search--container .results--page__container {
+  position: relative;
+  cursor: pointer;
+}
+.search--container .results--page__container .results--page__heading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1.2rem;
+  background-color: #251429;
+  border-radius: 1rem;
+  overflow: hidden;
+  transition: border-radius 0.3s ease-out;
+}
+.search--container .results--page__container .results--page__heading.dropdown--open {
+  border-radius: 0;
+}
+.search--container .results--page__container .results--page__heading.dropdown--open .svg--container svg {
+  transform: rotate(180deg);
+}
+.search--container .results--page__container .results--page__heading .svg--container {
+  width: 3.2rem;
+  height: 4.8rem;
+}
+.search--container .results--page__container .results--page__heading .svg--container svg {
+  transform: rotate(0);
+  fill: #c3d1e1;
+  transition: transform 0.3s ease-out;
+}
+.search--container .results--page__container .results--page__heading span {
+  font-size: 1.8rem;
+  color: #c3d1e1;
+}
+.search--container .results--page__container .dropdown--content {
+  list-style: none;
+  width: 100%;
+  background-color: #9e7cb1;
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0%;
+}
+.search--container .results--page__container .dropdown--content.dropdown--open {
+  display: block;
+  -webkit-animation: growDown 0.3s ease-in-out forwards;
+          animation: growDown 0.3s ease-in-out forwards;
+  transform-origin: top center;
+}
+.search--container .results--page__container .dropdown--content.dropdown--open li {
+  display: block;
+  opacity: 1;
+}
+.search--container .results--page__container .dropdown--content li {
+  font-size: 1.8rem;
+  padding: 1rem;
+  border-bottom: 1px solid white;
+  display: none;
+  opacity: 0;
+}
+.search--container .results--page__container .dropdown--content li.active .li--flex svg {
+  transform: scale(0.7);
+}
+.search--container .results--page__container .dropdown--content li .li--flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.search--container .results--page__container .dropdown--content li .li--flex svg {
+  transform: scale(0);
+}
+.search--container .results--page__container .dropdown--content li:hover {
+  background-color: #ecb446;
+}
+
 .RenderMap {
   transition: all 0.5s ease-out;
   display: flex;
