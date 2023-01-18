@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { useFetch } from "../hooks/useFetch";
+import { useState, useEffect } from "react";
 
 import ListView from "../components/ListView";
 import RenderMap from "../components/RenderMap";
@@ -7,7 +6,34 @@ import StatisticsView from "../components/StatisticsView";
 
 const Mainpage = () => {
   const [mapData, setMapData] = useState(null);
-  const { data, error } = useFetch("journeys", "dev");
+  const [collection, setCollection] = useState("journeys");
+  const [error, setError] = useState(null);
+  const [data, setData] = useState(null);
+  const [results, setResults] = useState(null);
+  const [page, setPage] = useState(1);
+  const [limit, setLimit] = useState(5);
+  const [fields, setFields] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        setIsLoading(true);
+        const res = await fetch(
+          `http://localhost:5000/${collection}/getAll?page=${page}&limit=${limit}&fields=${fields}`
+        );
+
+        const json = await res.json();
+
+        setData(json.data);
+        setResults(json.results);
+        setIsLoading(false);
+      } catch (err) {
+        setError(err);
+      }
+    };
+    getData();
+  }, [page, limit, collection, fields]);
 
   const handleStyle = () => {
     document
@@ -19,14 +45,21 @@ const Mainpage = () => {
   return (
     <div className="Mainpage">
       <div className="overlay"></div>
-      <RenderMap mapData={mapData} />
+      <RenderMap mapData={mapData} collection={collection} />
       <ListView
-        test={handleStyle}
+        handleStatisticsViewStyle={handleStyle}
+        isLoading={isLoading}
         data={data}
+        results={results}
         error={error}
         setMapData={setMapData}
+        page={page}
+        setPage={setPage}
+        setCollection={setCollection}
+        collection={collection}
+        setFields={setFields}
       />
-      <StatisticsView test={handleStyle} />
+      <StatisticsView handleStatisticsViewStyle={handleStyle} />
     </div>
   );
 };

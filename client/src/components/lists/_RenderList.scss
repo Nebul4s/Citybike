@@ -1,0 +1,33 @@
+@import "../../Mixins";
+@import "../../Variables";
+
+.List {
+  flex: 0.9;
+  background-color: $color4;
+  width: 100%;
+
+  .loading--container {
+    @include flexCenter;
+    height: 100%;
+  }
+
+  .error--container {
+    @include flexCenter;
+    height: 100%;
+  }
+  li {
+    @include flexSpaceBetween;
+    padding: 1.2rem;
+    background-color: $color1;
+    border-bottom: 1px solid $color5;
+    cursor: pointer;
+    transition: all 0.2s;
+    &:hover {
+      background-color: $color5;
+      color: $color1;
+      span {
+        color: $color1;
+      }
+    }
+  }
+}

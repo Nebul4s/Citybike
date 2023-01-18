@@ -8,12 +8,11 @@
   top: 0;
   width: 90%;
   height: 100%;
-  transform: scaleX(0);
-  transform-origin: 100% 50%;
+  transform: translateX(100%);
   transition: all 0.4s ease-out;
   z-index: 9999;
   &.stats-open__statView {
-    transform: scaleX(1);
+    transform: translateX(0);
   }
   .stats-header {
     padding: 0.4rem 1.8rem;

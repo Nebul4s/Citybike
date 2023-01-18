@@ -57,14 +57,30 @@
   .search--container {
     @include flexSpaceBetween;
     padding: 0.8rem 0rem;
+    background-color: #f9fafc;
     .search--input__container {
       @include flexSpaceBetween;
-      border: 1px solid #ccc;
+      border: 1px solid rgba($color: $color5, $alpha: 0.5);
       border-radius: 5rem;
-      padding: 0 1.2rem;
       margin-left: 0.2rem;
-      svg {
-        transform: scale(0.7);
+      overflow: hidden;
+      .search--svg__container {
+        background-color: $color5;
+        border-radius: 50%;
+        padding: 0.2rem;
+        cursor: pointer;
+        @include flexCenter;
+        transition: all 0.15s;
+        svg {
+          fill: $color1;
+          transform: scale(0.7);
+        }
+        &:hover {
+          background-color: $color3;
+          svg {
+            fill: $color5;
+          }
+        }
       }
     }
     input {
@@ -81,9 +97,23 @@
       padding: 0.2rem;
       border-radius: 1rem;
       margin-right: 1rem;
+      cursor: pointer;
+      transition: all 0.15s;
       svg {
         fill: $color1;
         scale: (0.8);
+      }
+      &:hover {
+        background-color: $color3;
+        svg {
+          fill: $color5;
+        }
+      }
+    }
+    .results--page__container {
+      select {
+        padding: 1.2rem;
+        font-size: 1.8rem;
       }
     }
   }
@@ -93,11 +123,16 @@
     @include flexSpaceEvenly;
     font-size: 1.6rem;
     background-color: $color2;
+    .pagination--hidden {
+      visibility: hidden;
+      pointer-events: none;
+      opacity: 0;
+    }
     div {
       background-color: $color5;
       border-radius: 50%;
       cursor: pointer;
-      transition: all 0.15s;
+      transition: fill, background-color 0.15s;
       svg {
         fill: $color1;
       }

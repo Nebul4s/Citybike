@@ -12,7 +12,8 @@ body {
   font-family: "Roboto", sans-serif;
   height: 100vh;
   width: 100vw;
-  background-color: #ccc;
+  background: linear-gradient(to bottom left, #514354 25%, black);
+  // background-color: #514354;
 }
 
 @import "./Variables";
@@ -21,6 +22,10 @@ body {
 @import "./components/StatisticsView";
 @import "./components/ListView";
 @import "./components/RenderMap";
-@import "./components/List";
+@import "./components/lists/RenderList";
 @import "./components/LoadingAnimation";
 @import "./components/ErrorMessage";
+@import "./components/lists/JourneyList";
+@import "./components/lists/LocationList";
+@import "./components/locationDetails/JourneyDetails";
+@import "./components/locationDetails/LocationDetails";

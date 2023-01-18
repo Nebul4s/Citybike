@@ -4,17 +4,62 @@
   transition: all 0.5s ease-out;
   display: flex;
   flex-direction: column;
+  position: relative;
   .leaflet-container {
-    flex: 0.7;
+    flex: 1;
   }
   .location--details__container {
     background-color: $color5;
-    flex: 0.3;
     padding: 1.2rem;
-    h2 {
-      font-size: 2.4rem;
-      text-align: center;
-      color: $color1;
+    position: absolute;
+    width: 100%;
+    min-height: 40%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 7000;
+    transform: translateY(100%);
+    transition: transform 0.5s ease-out;
+    &.details--open {
+      transform: translateY(0);
+    }
+    .expand--btn {
+      @include flexCenter;
+      overflow: hidden;
+      height: 3.2rem;
+      width: 4.8rem;
+      border-radius: 0.5rem;
+      background-color: $color3;
+      cursor: pointer;
+
+      position: absolute;
+      left: 50%;
+      right: 50%;
+      top: 0;
+      transform: translate(-50%, -50%);
+      transition: transform 0.5s ease-out;
+      svg {
+        fill: $color5;
+        transition: transform 0.5s ease-out;
+      }
+      &.close--details {
+        transform: translate(-50%, -90%);
+        svg {
+          transform: rotate(180deg);
+        }
+      }
+    }
+    .inner--container {
+      position: relative;
+      height: 100%;
+      width: 100%;
+      h2 {
+        font-size: 2.4rem;
+        text-align: center;
+        color: $color1;
+        margin-bottom: 1.2rem;
+        padding-top: 2rem;
+      }
     }
   }
 }
