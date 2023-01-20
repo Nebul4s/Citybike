@@ -21,11 +21,19 @@ exports.getLocation = async (req, res) => {
 
 exports.getAllLocations = async (req, res) => {
   try {
-    const features = new Features(Location.find(), req.query, false)
-      .filter()
-      .sort()
-      .limitFields()
-      .paginate();
+    let features;
+    if (!req.query.page) {
+      features = new Features(Location.find(), req.query, false)
+        .filter()
+        .sort()
+        .limitFields();
+    } else {
+      features = new Features(Location.find(), req.query, false)
+        .filter()
+        .sort()
+        .limitFields()
+        .paginate();
+    }
     const results = new Features(Location.find(), req.query, true).filter();
 
     const count = await results.query;

@@ -9,7 +9,24 @@ class Features {
     const excludedFields = ["page", "limit", "sort", "fields"];
     excludedFields.forEach((item) => delete queryObj[item]);
 
-    this.query.find(queryObj);
+    if (queryObj.DepartureStationName) {
+      queryObj.DepartureStationName = queryObj.DepartureStationName.split(",");
+    } else {
+      delete queryObj.DepartureStationName;
+    }
+
+    if (queryObj.ReturnStationName) {
+      queryObj.ReturnStationName = queryObj.ReturnStationName.split(",");
+    } else {
+      delete queryObj.ReturnStationName;
+    }
+
+    //regular expression that replaces operators from querystring with mongodb compatible operators
+    let queryStr = JSON.stringify(queryObj);
+    queryStr = queryStr.replace(/\b(gt|gte|lt|lte)\b/g, (match) => `$${match}`);
+
+    this.query.find(JSON.parse(queryStr));
+
     if (this.count) {
       this.query.countDocuments();
     }
