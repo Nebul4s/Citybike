@@ -18,6 +18,7 @@ const ListView = ({
   setCollection,
   collection,
   setFields,
+  setFilters,
 }) => {
   const handleActiveStyle = (e) => {
     const buttons = document.querySelectorAll(".nav--btn");
@@ -66,7 +67,11 @@ const ListView = ({
           <span></span>
         </li>
       </ul>
-      <SearchAndFilter setLimit={setLimit} setPage={setPage} />
+      <SearchAndFilter
+        setLimit={setLimit}
+        setPage={setPage}
+        setFilters={setFilters}
+      />
       <RenderList
         isLoading={isLoading}
         data={data}
@@ -81,15 +86,21 @@ const ListView = ({
           </div>
         ) : (
           <div className="pagination--hidden">
-            <ChevronLeft onClick={() => setPage((page -= 1))} />
+            <ChevronLeft />
           </div>
         )}
         <span>
           Page {page} of {Math.ceil(results / limit)}
         </span>
-        <div>
-          <ChevronRight onClick={() => setPage((page += 1))} />
-        </div>
+        {page !== Math.ceil(results / limit) ? (
+          <div>
+            <ChevronRight onClick={() => setPage((page += 1))} />
+          </div>
+        ) : (
+          <div className="pagination--hidden">
+            <ChevronRight />
+          </div>
+        )}
       </div>
     </div>
   );

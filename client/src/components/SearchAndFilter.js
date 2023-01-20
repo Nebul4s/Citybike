@@ -1,9 +1,11 @@
+import Filter from "./filter/Filter";
+
 import { ReactComponent as OpenSVG } from "../assets/expand_more.svg";
 import { ReactComponent as Search } from "../assets/search.svg";
-import { ReactComponent as Filter } from "../assets/filter.svg";
+import { ReactComponent as FilterSVG } from "../assets/filter.svg";
 import { ReactComponent as Check } from "../assets/check.svg";
 
-const SearchAndFilter = ({ setLimit, setPage }) => {
+const SearchAndFilter = ({ setLimit, setPage, setFilters }) => {
   const handleDropdown = () => {
     document
       .querySelector(".results--page__heading ")
@@ -26,6 +28,13 @@ const SearchAndFilter = ({ setLimit, setPage }) => {
     target.classList.add("active");
     handleDropdown();
   };
+
+  const handleOpenFilters = () => {
+    document
+      .querySelector(".filter--container")
+      .classList.toggle("filters--open");
+  };
+
   return (
     <div className="search--container">
       <div className="search--input__container">
@@ -84,9 +93,10 @@ const SearchAndFilter = ({ setLimit, setPage }) => {
           </li>
         </ul>
       </div>
-      <div className="filter--container">
-        <Filter />
+      <div className="filter--svg__container" onClick={handleOpenFilters}>
+        <FilterSVG />
       </div>
+      <Filter setFilters={setFilters} setPage={setPage} />
     </div>
   );
 };

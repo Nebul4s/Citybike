@@ -1,0 +1,79 @@
+@import "../Mixins";
+@import "../Variables";
+.MultiSelectList {
+  background-color: $color5;
+  position: relative;
+  flex: 0.45;
+  .list--btn__container {
+    background-color: $color1;
+    color: $color5;
+    @include flexSpaceEvenly;
+    position: relative;
+    cursor: pointer;
+    border-radius: 1rem;
+    &.list--open {
+      svg {
+        transform: rotate(180deg);
+      }
+    }
+    span {
+      font-size: 1.8rem;
+    }
+    svg {
+      transform: rotate(0);
+      transition: all 0.2s ease-out;
+    }
+  }
+  .list--items {
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+
+    background-color: $color1;
+    color: $color5;
+    border-radius: 1rem;
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: absolute;
+    max-height: 20rem;
+    width: 100%;
+    top: 110%;
+    z-index: 3;
+    &.list--open {
+      opacity: 1;
+      pointer-events: auto;
+      visibility: visible;
+    }
+    li {
+      @include flexSpaceBetween;
+      padding: 1.2rem 1.8rem;
+      cursor: pointer;
+      transition: all 0.2s ease-out;
+      background-color: $color3;
+      &.checked {
+        svg {
+          transform: scale(0.6) !important;
+        }
+      }
+      &:hover {
+        background-color: $color2;
+      }
+      span {
+        font-size: 1.8rem;
+      }
+      .checkbox {
+        border: 1px solid black;
+        height: 2.8rem;
+        width: 2.8rem;
+        @include flexCenter;
+        overflow: hidden;
+        position: relative;
+
+        svg {
+          position: absolute;
+          transform: scale(0);
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,67 @@
+@import "../../Variables";
+@import "../../Mixins";
+
+.filter--container {
+  position: absolute;
+  background-color: $color5;
+  color: $color1;
+  width: 100%;
+  min-height: 20rem;
+  top: 100%;
+  transform: translateX(100%);
+  transition: 0.4s ease-out;
+  z-index: 4;
+  padding-top: 1.8rem;
+  &.filters--open {
+    transform: translateX(0);
+  }
+  .filter--date__container {
+    .filter--date__header {
+      h2 {
+        font-size: 1.8rem;
+        text-align: center;
+        margin-bottom: 1rem;
+      }
+    }
+    .filter--date__inputs {
+      @include flexSpaceEvenly;
+      input {
+        background-color: $color1;
+        border-radius: 1rem;
+      }
+    }
+  }
+  .filter--by__name {
+    margin-top: 1.2rem;
+    h2 {
+      text-align: center;
+      font-size: 1.8rem;
+      margin-bottom: 1.2rem;
+    }
+    .by--name__lists {
+      @include flexSpaceEvenly;
+    }
+  }
+  .submit--filter__container {
+    @include flexSpaceEvenly;
+    padding: 1.2rem 0;
+    button {
+      padding: 1.2rem 1.8rem;
+      font-size: 1.8rem;
+      color: $color5;
+      background-color: $color3;
+      border-radius: 1rem;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s ease-out;
+      &.clear {
+        background-color: #aa4a44;
+      }
+      &:hover {
+        background-color: $color2;
+        transform: translateY(1px);
+        border-radius: 0;
+      }
+    }
+  }
+}

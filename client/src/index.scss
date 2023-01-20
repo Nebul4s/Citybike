@@ -14,31 +14,30 @@ body {
   height: 100vh;
   width: 100vw;
   background: linear-gradient(to bottom left, #514354 25%, black);
-  // background-color: #514354;
 }
 
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 1rem;
 }
 
-/* Track */
 ::-webkit-scrollbar-track {
   background-color: $color1;
 }
 
-/* Handle */
 ::-webkit-scrollbar-thumb {
   background: $color5;
   border-radius: 5rem;
 }
 
-/* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: $color3;
 }
 
 @import "./App";
 @import "./pages/Mainpage";
+@import "./components/filter/MultiSelectList";
+@import "./components/filter/RangeSlider";
+@import "./components/filter/Filter";
 @import "./components/StatisticsView";
 @import "./components/ListView";
 @import "./components/SearchAndFilter";

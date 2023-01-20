@@ -1,7 +1,8 @@
+@import "../Variables";
+@import "../Mixins";
+
 .ErrorMessage {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include flexCenter;
   gap: 0.6rem;
   color: $color2;
   fill: $color2;

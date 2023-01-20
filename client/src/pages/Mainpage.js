@@ -13,6 +13,7 @@ const Mainpage = () => {
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(5);
   const [fields, setFields] = useState("");
+  const [filters, setFilters] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
@@ -20,7 +21,7 @@ const Mainpage = () => {
       try {
         setIsLoading(true);
         const res = await fetch(
-          `http://localhost:5000/${collection}/getAll?page=${page}&limit=${limit}&fields=${fields}`
+          `http://localhost:5000/${collection}/getAll?page=${page}&limit=${limit}&fields=${fields}&${filters}`
         );
 
         const json = await res.json();
@@ -33,7 +34,7 @@ const Mainpage = () => {
       }
     };
     getData();
-  }, [page, limit, collection, fields]);
+  }, [page, limit, collection, fields, filters]);
 
   const handleStyle = () => {
     document
@@ -60,6 +61,8 @@ const Mainpage = () => {
         setCollection={setCollection}
         collection={collection}
         setFields={setFields}
+        filters={filters}
+        setFilters={setFilters}
       />
       <StatisticsView handleStatisticsViewStyle={handleStyle} />
     </div>
