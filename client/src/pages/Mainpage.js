@@ -14,27 +14,47 @@ const Mainpage = () => {
   const [limit, setLimit] = useState(5);
   const [fields, setFields] = useState("");
   const [filters, setFilters] = useState("");
+  const [search, setSearch] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [getLocationStats, setGetLocationStats] = useState(null);
+  const [locationStats, setLocationStats] = useState(null);
+  const [statsLoading, setStatsLoading] = useState(false);
 
   useEffect(() => {
     const getData = async () => {
       try {
-        setIsLoading(true);
-        const res = await fetch(
-          `http://localhost:5000/${collection}/getAll?page=${page}&limit=${limit}&fields=${fields}&${filters}`
-        );
+        if (!search) {
+          setIsLoading(true);
+          const res = await fetch(
+            `http://localhost:5000/${collection}/getAll?page=${page}&limit=${limit}&fields=${fields}&${filters}`
+          );
 
-        const json = await res.json();
+          const json = await res.json();
 
-        setData(json.data);
-        setResults(json.results);
-        setIsLoading(false);
+          setData(json.data);
+          setResults(json.results);
+          setIsLoading(false);
+        }
+
+        if (search) {
+          setIsLoading(true);
+          setData(null);
+          const res = await fetch(
+            `http://localhost:5000/${collection}/search?page=${page}&limit=${limit}&fields=${fields}&${filters}&search=${search}`
+          );
+
+          const json = await res.json();
+
+          setData(json.data);
+          setResults(json.results);
+          setIsLoading(false);
+        }
       } catch (err) {
         setError(err);
       }
     };
     getData();
-  }, [page, limit, collection, fields, filters]);
+  }, [page, limit, collection, fields, filters, search]);
 
   const handleStyle = () => {
     document
@@ -46,7 +66,12 @@ const Mainpage = () => {
   return (
     <div className="Mainpage">
       <div className="overlay"></div>
-      <RenderMap mapData={mapData} collection={collection} />
+      <RenderMap
+        mapData={mapData}
+        collection={collection}
+        locationStats={locationStats}
+        statsLoading={statsLoading}
+      />
       <ListView
         handleStatisticsViewStyle={handleStyle}
         isLoading={isLoading}
@@ -63,6 +88,12 @@ const Mainpage = () => {
         setFields={setFields}
         filters={filters}
         setFilters={setFilters}
+        search={search}
+        setSearch={setSearch}
+        setGetLocationStats={setGetLocationStats}
+        getLocationStats={getLocationStats}
+        setLocationStats={setLocationStats}
+        setStatsLoading={setStatsLoading}
       />
       <StatisticsView handleStatisticsViewStyle={handleStyle} />
     </div>

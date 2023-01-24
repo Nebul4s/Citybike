@@ -1,8 +1,10 @@
+import { useEffect } from "react";
+
 import RenderList from "./lists/RenderList";
+import SearchAndFilter from "./SearchAndFilter";
 
 import { ReactComponent as ChevronLeft } from "../assets/left.svg";
 import { ReactComponent as ChevronRight } from "../assets/right.svg";
-import SearchAndFilter from "./SearchAndFilter";
 
 const ListView = ({
   handleStatisticsViewStyle,
@@ -19,6 +21,12 @@ const ListView = ({
   collection,
   setFields,
   setFilters,
+  search,
+  setSearch,
+  setGetLocationStats,
+  getLocationStats,
+  setLocationStats,
+  setStatsLoading,
 }) => {
   const handleActiveStyle = (e) => {
     const buttons = document.querySelectorAll(".nav--btn");
@@ -41,7 +49,48 @@ const ListView = ({
 
   const handleSelectListItem = (item) => {
     setMapData(item);
+
+    if (collection === "locations") {
+      setGetLocationStats(item.Nimi);
+    }
   };
+
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        if (collection !== "locations" || !getLocationStats) {
+          setGetLocationStats(null);
+          setLocationStats(null);
+          document
+            .querySelector(".location--details__container")
+            .classList.remove("fixed--height");
+          return;
+        }
+
+        setStatsLoading(true);
+        const res = await fetch(
+          `http://localhost:5000/locations/getLocationStats/${getLocationStats}`
+        );
+
+        const json = await res.json();
+
+        if (!json.data.departureStats.length) return;
+
+        setLocationStats(json.data);
+        setStatsLoading(false);
+      } catch (err) {
+        console.log(err.message);
+        setStatsLoading(false);
+      }
+    };
+    getData();
+  }, [
+    getLocationStats,
+    collection,
+    setLocationStats,
+    setStatsLoading,
+    setGetLocationStats,
+  ]);
 
   return (
     <div className="ListView">
@@ -71,6 +120,9 @@ const ListView = ({
         setLimit={setLimit}
         setPage={setPage}
         setFilters={setFilters}
+        collection={collection}
+        setSearch={setSearch}
+        search={search}
       />
       <RenderList
         isLoading={isLoading}

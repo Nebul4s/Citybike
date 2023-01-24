@@ -4,21 +4,18 @@
 .LocationDetails {
   color: $color1;
   display: flex;
+  flex-direction: column;
+  margin-top: 2.4rem;
 
   .location--details__box {
-    flex: 0.5;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
+    flex: 1;
+    @include flexSpaceEvenly;
     flex-direction: column;
-    h2 {
-      font-size: 1.8rem;
-      border-bottom: 1px solid $color1;
-    }
+
     ul {
       list-style: none;
       $color: $color1;
-      width: 80%;
+      width: 100%;
       display: flex;
       flex-direction: column;
       gap: 1rem;
@@ -38,6 +35,58 @@
         }
         span {
           font-size: 1.4rem;
+        }
+      }
+    }
+  }
+  .location--details__avg {
+    @include flexSpaceBetween;
+    margin-top: 4.8rem;
+    .avg--item__container {
+      @include flexCenter;
+      flex-direction: column;
+      flex: 0.45;
+      gap: 1.8rem;
+      .border {
+        height: 1px;
+        width: 100%;
+        background-color: $color1;
+      }
+      span {
+        font-size: 1.4rem;
+      }
+      .detail {
+        width: 80%;
+        text-align: center;
+        background-color: $color1;
+        border-radius: 1.5rem;
+        padding: 1.2rem;
+        color: $color5;
+        font-weight: 600;
+      }
+    }
+  }
+  .location--details__toplist {
+    .toplist--item__container {
+      margin-top: 2.4rem;
+      h2 {
+        padding: 1.2rem;
+        border-bottom: 1px solid $color1;
+      }
+      .toplist--item {
+        @include flexSpaceBetween;
+        ul {
+          list-style: none;
+          flex: 0.5;
+          li {
+            width: 100%;
+            padding: 0.6rem 0.4rem;
+            @include flexSpaceBetween;
+            border-bottom: 1px dotted $color1;
+            span {
+              font-size: 1.4rem;
+            }
+          }
         }
       }
     }

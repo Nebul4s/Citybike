@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+
 import Filter from "./filter/Filter";
 
 import { ReactComponent as OpenSVG } from "../assets/expand_more.svg";
@@ -5,7 +7,17 @@ import { ReactComponent as Search } from "../assets/search.svg";
 import { ReactComponent as FilterSVG } from "../assets/filter.svg";
 import { ReactComponent as Check } from "../assets/check.svg";
 
-const SearchAndFilter = ({ setLimit, setPage, setFilters }) => {
+const SearchAndFilter = ({
+  setLimit,
+  setPage,
+  setFilters,
+  collection,
+  search,
+  setSearch,
+}) => {
+  const [minMaxValues, setMinMaxValues] = useState(null);
+  const [filtersLoading, setFiltersLoading] = useState(false);
+
   const handleDropdown = () => {
     document
       .querySelector(".results--page__heading ")
@@ -35,12 +47,47 @@ const SearchAndFilter = ({ setLimit, setPage, setFilters }) => {
       .classList.toggle("filters--open");
   };
 
+  const submitSearch = (e, clicked) => {
+    if (e.code === "Enter" || clicked) {
+      setSearch(e.target.value);
+    }
+  };
+
+  const clearSearch = (e) => {
+    if (e.target.value === "") setSearch("");
+  };
+
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        setFiltersLoading(true);
+        const res = await fetch(
+          `http://localhost:5000/${collection}/getMinMax`
+        );
+
+        const json = await res.json();
+
+        setMinMaxValues(...json.data);
+        setFiltersLoading(false);
+      } catch (err) {
+        console.log(err.message);
+        setFiltersLoading(false);
+      }
+    };
+    getData();
+  }, [collection]);
+
   return (
     <div className="search--container">
       <div className="search--input__container">
-        <input type="search" placeholder="Search.." />
+        <input
+          type="search"
+          placeholder="Search.."
+          onKeyDown={submitSearch}
+          onChange={clearSearch}
+        />
         <div className="search--svg__container">
-          <Search />
+          <Search onClick={(__) => submitSearch(__, "clicked")} />
         </div>
       </div>
       <div className="results--page__container">
@@ -96,7 +143,15 @@ const SearchAndFilter = ({ setLimit, setPage, setFilters }) => {
       <div className="filter--svg__container" onClick={handleOpenFilters}>
         <FilterSVG />
       </div>
-      <Filter setFilters={setFilters} setPage={setPage} />
+
+      <Filter
+        setFilters={setFilters}
+        setPage={setPage}
+        minMaxValues={minMaxValues}
+        filtersLoading={filtersLoading}
+        collection={collection}
+        search={search}
+      />
     </div>
   );
 };

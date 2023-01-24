@@ -11,7 +11,36 @@
   transform: translateX(100%);
   transition: 0.4s ease-out;
   z-index: 4;
-  padding-top: 1.8rem;
+  .title--container {
+    .title {
+      text-align: center;
+      font-size: 2.8rem;
+      padding: 1.8rem;
+      border-bottom: 1px solid $color1;
+      margin-bottom: 1.8rem;
+    }
+  }
+  .locations--filter__container {
+    width: 100%;
+    @include flexCenter;
+    flex-direction: column;
+    gap: 2.4rem;
+    .MultiSelectList {
+      width: 50%;
+    }
+    .capacity--slider {
+      margin: auto;
+    }
+  }
+  .animation--container {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translate(-50%, 50%);
+    svg {
+      fill: $color3;
+    }
+  }
   &.filters--open {
     transform: translateX(0);
   }
