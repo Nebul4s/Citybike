@@ -34,6 +34,10 @@ const journeySchema = new mongoose.Schema({
     required: true,
   },
 });
+journeySchema.index({
+  DepartureStationName: "text",
+  ReturnStationName: "text",
+});
 
 const Journey = mongoose.model("Journey", journeySchema);
 

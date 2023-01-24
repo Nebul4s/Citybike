@@ -4,9 +4,14 @@ class Features {
     this.queryString = queryString;
     this.count = count;
   }
+  search() {
+    this.query.find({ $text: { $search: this.queryString.search } });
+
+    return this;
+  }
   filter() {
     const queryObj = { ...this.queryString };
-    const excludedFields = ["page", "limit", "sort", "fields"];
+    const excludedFields = ["page", "limit", "sort", "fields", "search"];
     excludedFields.forEach((item) => delete queryObj[item]);
 
     if (queryObj.DepartureStationName) {
