@@ -92,8 +92,29 @@ const ListView = ({
     setGetLocationStats,
   ]);
 
+  const handleMobileExpand = (e) => {
+    const view = document.querySelector(".ListView");
+    view.classList.toggle("expand--open");
+
+    const target = e.target.closest(".mobile--expandBtn__container");
+    target.classList.toggle("expand--open");
+
+    if (target.classList.contains("expand--open")) {
+      target.querySelector("span").innerHTML = "Close";
+    } else {
+      target.querySelector("span").innerHTML = "Open";
+    }
+  };
+
   return (
-    <div className="ListView">
+    <div className="ListView expand--open">
+      <div
+        className="mobile--expandBtn__container expand--open"
+        onClick={handleMobileExpand}
+      >
+        <ChevronRight />
+        <span>Close</span>
+      </div>
       <ul className="btn-container">
         <li
           className="nav--btn active"

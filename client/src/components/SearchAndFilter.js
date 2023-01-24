@@ -99,7 +99,7 @@ const SearchAndFilter = ({
         </div>
         <ul className="dropdown--content">
           <li
-            className="dropdown--item active"
+            className="dropdown--item"
             onClick={(e) => handlePageLimit(e)}
             data--value="5"
           >
@@ -119,7 +119,7 @@ const SearchAndFilter = ({
             </div>
           </li>
           <li
-            className="dropdown--item"
+            className="dropdown--item active"
             onClick={(e) => handlePageLimit(e)}
             data--value="25"
           >

@@ -79,6 +79,22 @@ body {
   flex: 0.6;
 }
 
+@media (max-width: 1000px) {
+  .Mainpage {
+    display: inline;
+    perspective: 1px;
+  }
+  .ListView {
+    position: absolute !important;
+    top: 0;
+    right: 0;
+    width: 0%;
+  }
+  .RenderMap {
+    width: 100%;
+    height: 100%;
+  }
+}
 .MultiSelectList {
   background-color: #251429;
   position: relative;
@@ -241,6 +257,7 @@ body {
   transform: translateX(100%);
   transition: 0.4s ease-out;
   z-index: 4;
+  overflow-y: auto;
 }
 .filter--container .title--container .title {
   text-align: center;
@@ -327,6 +344,19 @@ body {
   border-radius: 0;
 }
 
+@media (max-width: 1000px) {
+  .filter--date__inputs {
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+  .by--name__lists {
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+  .by--name__lists .MultiSelectList {
+    width: 80%;
+  }
+}
 .StatisticsView {
   position: absolute;
   background-color: #251429;
@@ -378,6 +408,7 @@ body {
 .ListView {
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 .ListView .btn-container {
   flex: 0.05;
@@ -458,6 +489,43 @@ body {
 .ListView .pagination div:hover svg {
   fill: #251429;
 }
+.ListView .mobile--expandBtn__container {
+  position: absolute;
+  top: 0;
+  right: 100%;
+  z-index: 100000;
+  background-color: #251429;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: all 0.2s ease-out;
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+}
+.ListView .mobile--expandBtn__container svg {
+  fill: #c3d1e1;
+  transform: rotate(-180deg);
+}
+.ListView .mobile--expandBtn__container span {
+  color: #c3d1e1;
+  font-size: 1.8rem;
+  margin-right: 1.8rem;
+}
+.ListView .mobile--expandBtn__container:hover {
+  background-color: #9e7cb1;
+}
+.ListView .mobile--expandBtn__container:hover span {
+  color: #251429;
+}
+.ListView .mobile--expandBtn__container:hover svg {
+  fill: #251429;
+  transition: transform 0.2s ease-out;
+}
+.ListView .mobile--expandBtn__container.expand--open svg {
+  transform: rotate(0);
+}
 
 @-webkit-keyframes growDown {
   0% {
@@ -482,6 +550,40 @@ body {
     transform: scaleY(1);
   }
 }
+@media (max-width: 1000px) {
+  .ListView {
+    transform: translateX(100%);
+    transition: all 0.3s linear;
+  }
+  .ListView.expand--open {
+    width: 50%;
+    height: 100%;
+    transform: translateX(0);
+  }
+  .ListView .mobile--expandBtn__container {
+    opacity: 1;
+    pointer-events: all;
+    visibility: visible;
+  }
+}
+@media (max-width: 800px) {
+  .ListView.expand--open {
+    width: 60%;
+  }
+}
+@media (max-width: 650px) {
+  .ListView.expand--open {
+    width: 70%;
+  }
+}
+@media (max-width: 500px) {
+  .ListView.expand--open {
+    width: 90%;
+  }
+  .ListView .mobile--expandBtn__container span {
+    display: none;
+  }
+}
 .search--container {
   display: flex;
   align-items: center;
@@ -498,6 +600,9 @@ body {
   border-radius: 5rem;
   margin-left: 0.2rem;
   overflow: hidden;
+}
+.search--container .search--input__container input {
+  width: 80%;
 }
 .search--container .search--input__container .search--svg__container {
   background-color: #251429;
@@ -621,11 +726,42 @@ body {
   background-color: #ecb446;
 }
 
+@media (max-width: 1360px) {
+  .search--container .results--page__container {
+    width: 30%;
+  }
+}
+@media (max-width: 1260px) {
+  .search--container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.2rem;
+  }
+  .search--container .search--input__container {
+    grid-row: 1;
+    grid-column: 1/-1;
+    width: 95%;
+    justify-self: center;
+    margin-left: 0;
+  }
+  .search--container .results--page__container {
+    width: 90%;
+    align-self: center;
+    justify-self: center;
+  }
+  .search--container .filter--svg__container {
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    justify-self: end;
+  }
+}
 .RenderMap {
   transition: all 0.5s ease-out;
   display: flex;
   flex-direction: column;
   position: relative;
+  perspective: 1px;
 }
 .RenderMap .leaflet-container {
   flex: 1;

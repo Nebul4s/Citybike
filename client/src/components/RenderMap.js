@@ -62,7 +62,7 @@ const RenderMap = ({ mapData, collection, locationStats, statsLoading }) => {
   }, [mapData, collection]);
 
   return (
-    <div className="RenderMap">
+    <div className="RenderMap expand--open">
       <MapContainer
         className="details--open"
         center={coords}

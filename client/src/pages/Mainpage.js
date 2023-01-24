@@ -11,7 +11,7 @@ const Mainpage = () => {
   const [data, setData] = useState(null);
   const [results, setResults] = useState(null);
   const [page, setPage] = useState(1);
-  const [limit, setLimit] = useState(5);
+  const [limit, setLimit] = useState(25);
   const [fields, setFields] = useState("");
   const [filters, setFilters] = useState("");
   const [search, setSearch] = useState("");

@@ -11,6 +11,7 @@
   transform: translateX(100%);
   transition: 0.4s ease-out;
   z-index: 4;
+  overflow-y: auto;
   .title--container {
     .title {
       text-align: center;
@@ -91,6 +92,20 @@
         transform: translateY(1px);
         border-radius: 0;
       }
+    }
+  }
+}
+
+@media (max-width: 1000px) {
+  .filter--date__inputs {
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+  .by--name__lists {
+    flex-direction: column;
+    gap: 1.2rem;
+    .MultiSelectList {
+      width: 80%;
     }
   }
 }
