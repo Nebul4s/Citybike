@@ -42,6 +42,11 @@ const locationsSchema = new mongoose.Schema({
   },
 });
 
+locationsSchema.index({
+  Nimi: "text",
+  Kaupunki: "text",
+});
+
 const Location = mongoose.model("Location", locationsSchema);
 
 module.exports = Location;

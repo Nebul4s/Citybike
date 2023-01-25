@@ -26,10 +26,22 @@ class Features {
       delete queryObj.ReturnStationName;
     }
 
+    if (queryObj.Nimi) {
+      queryObj.Nimi = queryObj.Nimi.split(",");
+    } else {
+      delete queryObj.Nimi;
+    }
+
+    if (queryObj.Kaupunki) {
+      queryObj.Kaupunki = queryObj.Kaupunki.split(",");
+    } else {
+      delete queryObj.Kaupunki;
+    }
+
     //regular expression that replaces operators from querystring with mongodb compatible operators
     let queryStr = JSON.stringify(queryObj);
     queryStr = queryStr.replace(/\b(gt|gte|lt|lte)\b/g, (match) => `$${match}`);
-
+    console.log(JSON.parse(queryStr));
     this.query.find(JSON.parse(queryStr));
 
     if (this.count) {

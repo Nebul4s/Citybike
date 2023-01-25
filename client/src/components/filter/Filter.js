@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 
 import RangeSlider from "./RangeSlider";
+import OneWaySlider from "./OneWaySlider";
 import MultiSelectList from "./MultiSelectList";
 import LoadingAnimation from "../LoadingAnimation";
 
@@ -16,18 +17,24 @@ const Filter = ({
   const [endingDate, setEndingDate] = useState("");
   const [selectDepartureItems, setSelectDepartureItems] = useState([]);
   const [selectReturnItems, setSelectReturnItems] = useState([]);
+  const [selectLocationNameItems, setSelectLocationNameItems] = useState([]);
+  const [selectCityNames, setSelectCityNames] = useState([]);
   const [distanceMin, setDistanceMin] = useState(0);
   const [distanceMax, setDistanceMax] = useState(0);
   const [durationMin, setDurationMin] = useState(0);
   const [durationMax, setDurationMax] = useState(0);
   const [maxDurationValue, setMaxDurationValue] = useState(0);
   const [maxDistanceValue, setMaxDistanceValue] = useState(0);
+  const [bicycleCapacity, setBicycleCapacity] = useState(44);
+  const [maxBicycleCapacity, setMaxBicycleCapacity] = useState(0);
 
   const clearFilters = () => {
     setStartingDate(minMaxValues.minDeparture);
     setEndingDate(minMaxValues.maxDeparture);
     setSelectDepartureItems([]);
     setSelectReturnItems([]);
+    setSelectLocationNameItems([]);
+    setSelectCityNames([]);
     setDistanceMin((minMaxValues.minDistance / 1000).toFixed(2));
     setDistanceMax((minMaxValues.maxDistance / 1000).toFixed(2));
     setDurationMin((minMaxValues.minDuration / 60).toFixed(0));
@@ -40,18 +47,25 @@ const Filter = ({
   };
 
   const applyFilters = () => {
-    const departureItems = selectDepartureItems.join(",");
-    const returnItems = selectReturnItems.join(",");
+    if (collection === "journeys") {
+      const departureItems = selectDepartureItems.join(",");
+      const returnItems = selectReturnItems.join(",");
 
-    const stationNames = !search
-      ? `&DepartureStationName=${departureItems}&ReturnStationName=${returnItems}`
-      : "";
-    const queryString = `Departure[gte]=${startingDate}&Departure[lte]=${endingDate}${stationNames}&CoveredDistanceMeters[gte]=${
-      distanceMin * 1000
-    }&CoveredDistanceMeters[lte]=${distanceMax * 1000}&DurationSec[gte]=${
-      durationMin * 60
-    }&DurationSec[lte]=${durationMax * 60}`;
-    setFilters(queryString);
+      const stationNames = !search
+        ? `&DepartureStationName=${departureItems}&ReturnStationName=${returnItems}`
+        : "";
+      const queryString = `Departure[gte]=${startingDate}&Departure[lte]=${endingDate}${stationNames}&CoveredDistanceMeters[gte]=${
+        distanceMin * 1000
+      }&CoveredDistanceMeters[lte]=${distanceMax * 1000}&DurationSec[gte]=${
+        durationMin * 60
+      }&DurationSec[lte]=${durationMax * 60}`;
+      setFilters(queryString);
+    }
+
+    if (collection === "locations") {
+      const queryString = `Nimi=${selectLocationNameItems}&Kaupunki=${selectCityNames}&Kapasiteet[gte]=0&Kapasiteet[lte]=${bicycleCapacity}`;
+      setFilters(queryString);
+    }
     setPage(1);
   };
 
@@ -63,9 +77,11 @@ const Filter = ({
     setDistanceMax((minMaxValues.maxDistance / 1000).toFixed(2));
     setDurationMin((minMaxValues.minDuration / 60).toFixed(0));
     setDurationMax((minMaxValues.maxDuration / 60).toFixed(0));
-
     setMaxDurationValue((minMaxValues.maxDuration / 60).toFixed(0));
     setMaxDistanceValue((minMaxValues.maxDistance / 1000).toFixed(2));
+
+    setBicycleCapacity(minMaxValues.maxKapasiteet);
+    setMaxBicycleCapacity(minMaxValues.maxKapasiteet);
   }, [minMaxValues]);
 
   return (
@@ -118,8 +134,8 @@ const Filter = ({
                     <MultiSelectList
                       title="Return Stations"
                       listType="returnStations"
-                      selectReturnItems={selectReturnItems}
-                      setSelectReturnItems={setSelectReturnItems}
+                      selectCityNames={selectCityNames}
+                      setSelectCityNames={setSelectCityNames}
                     />
                   </div>
                 </div>
@@ -142,18 +158,20 @@ const Filter = ({
               />
             </>
           )}
-          {collection === "locations" && (
+          {minMaxValues && collection === "locations" && (
             <div className="locations--filter__container">
               <MultiSelectList
                 title="Stations"
-                listType="departureStations"
-                selectDepartureItems={selectDepartureItems}
-                setSelectDepartureItems={setSelectDepartureItems}
+                listType="locationNames"
+                selectLocationNameItems={selectLocationNameItems}
+                setSelectLocationNameItems={setSelectLocationNameItems}
               />
-              <div className="capacity--slider">
-                <h2>Bicycle Capacity</h2>
-                <input type="range" />
-              </div>
+              <OneWaySlider
+                title="Bicycle Capacity"
+                bicycleCapacity={bicycleCapacity}
+                setBicycleCapacity={setBicycleCapacity}
+                maxValue={maxBicycleCapacity}
+              />
             </div>
           )}
           <div className="submit--filter__container">

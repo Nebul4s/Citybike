@@ -10,6 +10,8 @@ const MultiSelectList = ({
   setSelectDepartureItems,
   selectReturnItems,
   setSelectReturnItems,
+  selectLocationNameItems,
+  setSelectLocationNameItems,
 }) => {
   const [locationNames, setLocationNames] = useState(null);
   const [error, setError] = useState(null);
@@ -38,7 +40,8 @@ const MultiSelectList = ({
       } else {
         setSelectDepartureItems([...selectDepartureItems, newItem]);
       }
-    } else {
+    }
+    if (listType === "returnStations") {
       if (selectReturnItems.includes(newItem)) {
         const newItems = selectReturnItems.filter(
           (oldItem) => oldItem !== newItem
@@ -46,6 +49,17 @@ const MultiSelectList = ({
         setSelectReturnItems(newItems);
       } else {
         setSelectReturnItems([...selectReturnItems, newItem]);
+      }
+    }
+    if (listType === "locationNames") {
+      //remove item if it was previously active and it's clicked again
+      if (selectLocationNameItems.includes(newItem)) {
+        const newItems = selectLocationNameItems.filter(
+          (oldItem) => oldItem !== newItem
+        );
+        setSelectLocationNameItems(newItems);
+      } else {
+        setSelectLocationNameItems([...selectLocationNameItems, newItem]);
       }
     }
   };

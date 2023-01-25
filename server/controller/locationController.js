@@ -23,6 +23,7 @@ exports.getLocation = async (req, res) => {
 exports.getAllLocations = async (req, res) => {
   try {
     let features;
+
     if (!req.query.page) {
       features = new Features(Location.find(), req.query, false)
         .filter()
@@ -125,6 +126,60 @@ exports.getLocationStats = async (req, res) => {
         topDepartureStations,
         topReturnStations,
       },
+    });
+  } catch (err) {
+    res.status(400).send({
+      status: "Failed",
+      message: err.message,
+    });
+  }
+};
+
+exports.getMinAndMax = async (req, res) => {
+  try {
+    const minAndMaxValues = await Location.aggregate([
+      {
+        $group: {
+          _id: {
+            Kapasiteet: "Kapasiteet",
+          },
+          minKapasiteet: { $min: "$Kapasiteet" },
+          maxKapasiteet: { $max: "$Kapasiteet" },
+        },
+      },
+    ]);
+
+    res.status(200).send({
+      status: "ok",
+      data: minAndMaxValues,
+    });
+  } catch (err) {
+    res.status(400).send({
+      status: "Failed",
+      message: err.message,
+    });
+  }
+};
+
+exports.search = async (req, res) => {
+  try {
+    const data = new Features(Location.find(), req.query, false)
+      .search()
+      .filter()
+      .sort()
+      .paginate();
+
+    const count = new Features(Location.find(), req.query, true)
+      .search()
+      .filter();
+
+    const locations = await data.query;
+    const results = await count.query;
+
+    res.status(200).send({
+      status: "ok",
+      results,
+      data: locations,
     });
   } catch (err) {
     res.status(400).send({
