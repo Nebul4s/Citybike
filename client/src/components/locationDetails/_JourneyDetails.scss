@@ -4,6 +4,7 @@
 .JourneyDetails {
   color: $color1;
   display: flex;
+
   .journey--details__box {
     flex: 0.5;
     display: flex;
@@ -44,5 +45,29 @@
         }
       }
     }
+  }
+}
+
+@media (max-width: 1280px) {
+  .JourneyDetails {
+    .journey--details__box {
+      ul {
+        width: 90%;
+      }
+    }
+  }
+}
+@media (max-width: 1150px) {
+  .JourneyDetails {
+    .journey--details__box {
+      ul {
+        width: 95%;
+      }
+    }
+  }
+}
+@media (max-width: 650px) {
+  .JourneyDetails {
+    flex-direction: column;
   }
 }

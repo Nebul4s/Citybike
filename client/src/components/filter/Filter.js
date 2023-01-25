@@ -81,8 +81,8 @@ const Filter = ({
     setMaxDistanceValue((minMaxValues.maxDistance / 1000).toFixed(2));
 
     setBicycleCapacity(minMaxValues.maxKapasiteet);
-    setMaxBicycleCapacity(minMaxValues.maxKapasiteet);
-  }, [minMaxValues]);
+    if (!maxBicycleCapacity) setMaxBicycleCapacity(minMaxValues.maxKapasiteet);
+  }, [minMaxValues, maxBicycleCapacity]);
 
   return (
     <div className="filter--container">
@@ -158,7 +158,7 @@ const Filter = ({
               />
             </>
           )}
-          {minMaxValues && collection === "locations" && (
+          {!filtersLoading && collection === "locations" && (
             <div className="locations--filter__container">
               <MultiSelectList
                 title="Stations"

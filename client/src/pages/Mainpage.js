@@ -8,6 +8,7 @@ let controller, signal;
 const Mainpage = () => {
   const [mapData, setMapData] = useState(null);
   const [collection, setCollection] = useState("journeys");
+
   const [error, setError] = useState(null);
   const [data, setData] = useState(null);
   const [results, setResults] = useState(null);
@@ -33,12 +34,13 @@ const Mainpage = () => {
         }
 
         if (!search) {
+          setError(null);
           setIsLoading(true);
+
           const res = await fetch(
             `http://localhost:5000/${collection}/getAll?page=${page}&limit=${limit}&fields=${fields}&${filters}`,
             { signal: signal }
           );
-          setError(null);
           const json = await res.json();
 
           setData(json.data);
@@ -47,13 +49,13 @@ const Mainpage = () => {
         }
 
         if (search) {
+          setError(null);
           setIsLoading(true);
           setData(null);
           const res = await fetch(
             `http://localhost:5000/${collection}/search?page=${page}&limit=${limit}&fields=${fields}&${filters}&search=${search}`,
             { signal: signal }
           );
-          setError(null);
           const json = await res.json();
 
           setData(json.data);
@@ -61,13 +63,11 @@ const Mainpage = () => {
           setIsLoading(false);
         }
       } catch (err) {
-        console.log(err.message);
         setError(err);
       }
     };
     getData();
   }, [page, limit, collection, fields, filters, search]);
-  console.log(data);
 
   const handleStyle = () => {
     document

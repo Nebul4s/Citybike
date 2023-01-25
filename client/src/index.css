@@ -354,6 +354,11 @@ body {
     width: 80%;
   }
 }
+@media (max-height: 1000px) and (max-width: 1000px) {
+  .filter--container {
+    max-height: 250%;
+  }
+}
 .StatisticsView {
   position: absolute;
   background-color: #251429;
@@ -836,6 +841,11 @@ body {
   padding-top: 2rem;
 }
 
+@media (max-width: 650px) {
+  .location--details__container {
+    height: 90%;
+  }
+}
 .List {
   flex: 0.9;
   background-color: #757782;
@@ -1138,6 +1148,21 @@ body {
   font-size: 1.4rem;
 }
 
+@media (max-width: 1280px) {
+  .JourneyDetails .journey--details__box ul {
+    width: 90%;
+  }
+}
+@media (max-width: 1150px) {
+  .JourneyDetails .journey--details__box ul {
+    width: 95%;
+  }
+}
+@media (max-width: 650px) {
+  .JourneyDetails {
+    flex-direction: column;
+  }
+}
 .LocationDetails {
   color: #c3d1e1;
   display: flex;
