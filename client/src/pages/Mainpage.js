@@ -4,6 +4,7 @@ import ListView from "../components/ListView";
 import RenderMap from "../components/RenderMap";
 import StatisticsView from "../components/StatisticsView";
 
+let controller, signal;
 const Mainpage = () => {
   const [mapData, setMapData] = useState(null);
   const [collection, setCollection] = useState("journeys");
@@ -23,12 +24,21 @@ const Mainpage = () => {
   useEffect(() => {
     const getData = async () => {
       try {
+        if (collection) {
+          if (controller) {
+            controller.abort();
+          }
+          controller = new AbortController();
+          signal = controller.signal;
+        }
+
         if (!search) {
           setIsLoading(true);
           const res = await fetch(
-            `http://localhost:5000/${collection}/getAll?page=${page}&limit=${limit}&fields=${fields}&${filters}`
+            `http://localhost:5000/${collection}/getAll?page=${page}&limit=${limit}&fields=${fields}&${filters}`,
+            { signal: signal }
           );
-
+          setError(null);
           const json = await res.json();
 
           setData(json.data);
@@ -40,9 +50,10 @@ const Mainpage = () => {
           setIsLoading(true);
           setData(null);
           const res = await fetch(
-            `http://localhost:5000/${collection}/search?page=${page}&limit=${limit}&fields=${fields}&${filters}&search=${search}`
+            `http://localhost:5000/${collection}/search?page=${page}&limit=${limit}&fields=${fields}&${filters}&search=${search}`,
+            { signal: signal }
           );
-
+          setError(null);
           const json = await res.json();
 
           setData(json.data);
@@ -50,11 +61,13 @@ const Mainpage = () => {
           setIsLoading(false);
         }
       } catch (err) {
+        console.log(err.message);
         setError(err);
       }
     };
     getData();
   }, [page, limit, collection, fields, filters, search]);
+  console.log(data);
 
   const handleStyle = () => {
     document

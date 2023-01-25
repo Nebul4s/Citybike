@@ -137,6 +137,7 @@ const ListView = ({
           <span></span>
         </li>
       </ul>
+
       <SearchAndFilter
         setLimit={setLimit}
         setPage={setPage}
@@ -145,6 +146,7 @@ const ListView = ({
         setSearch={setSearch}
         search={search}
       />
+
       <RenderList
         isLoading={isLoading}
         data={data}
@@ -152,6 +154,7 @@ const ListView = ({
         selectedItem={handleSelectListItem}
         collection={collection}
       />
+
       <div className="pagination">
         {page >= 2 ? (
           <div>
