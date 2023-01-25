@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 import ListView from "../components/ListView";
 import RenderMap from "../components/RenderMap";
@@ -8,7 +8,6 @@ let controller, signal;
 const Mainpage = () => {
   const [mapData, setMapData] = useState(null);
   const [collection, setCollection] = useState("journeys");
-
   const [error, setError] = useState(null);
   const [data, setData] = useState(null);
   const [results, setResults] = useState(null);
@@ -21,6 +20,8 @@ const Mainpage = () => {
   const [getLocationStats, setGetLocationStats] = useState(null);
   const [locationStats, setLocationStats] = useState(null);
   const [statsLoading, setStatsLoading] = useState(false);
+
+  const count = useRef(0);
 
   useEffect(() => {
     const getData = async () => {
@@ -62,12 +63,15 @@ const Mainpage = () => {
           setResults(json.results);
           setIsLoading(false);
         }
+        setError(null);
+        count.current = 1;
       } catch (err) {
-        setError(err);
+        if (count.current) setError(err);
       }
     };
     getData();
-  }, [page, limit, collection, fields, filters, search]);
+  }, [page, limit, collection, fields, filters, search, count]);
+  console.log(count.current);
 
   const handleStyle = () => {
     document

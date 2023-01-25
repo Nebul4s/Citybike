@@ -33,7 +33,6 @@ Running the client in a new terminal window
 
 ## Known Issues
 
-- At first launch or page reload error "User aborted the request" is displayed
 - In the filter a oneway slider component will give an error about the input being changed from controlled to uncontrolled
 
 ## Features coming soon
