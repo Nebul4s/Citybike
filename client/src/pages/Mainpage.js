@@ -71,7 +71,6 @@ const Mainpage = () => {
     };
     getData();
   }, [page, limit, collection, fields, filters, search, count]);
-  console.log(count.current);
 
   const handleStyle = () => {
     document

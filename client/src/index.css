@@ -46,15 +46,52 @@ body {
   background-color: white;
   display: flex;
   box-shadow: 1rem 1rem 4rem black;
-  overflow: hidden;
+  position: relative;
 }
 .App-container .App .Mainpage {
   flex: 1;
+}
+.App-container .App .nav {
+  display: flex;
+  position: absolute;
+  bottom: 100%;
+  width: 140rem;
+}
+.App-container .App .nav .nav--item {
+  text-align: center;
+  background-color: #9e7cb1;
+  cursor: pointer;
+  transition: all 0.2s ease-out;
+  width: 13%;
+  -webkit-clip-path: polygon(5% 0%, 95% 0%, 100% 100%, 0 100%);
+          clip-path: polygon(5% 0%, 95% 0%, 100% 100%, 0 100%);
+}
+.App-container .App .nav .nav--item a {
+  display: block;
+  padding: 1rem 0;
+  font-size: 1.4rem;
+  color: #251429;
+  text-decoration: none;
+  width: 100% !important;
+  height: 100% !important;
+}
+.App-container .App .nav .nav--item.active {
+  background-color: #251429;
+}
+.App-container .App .nav .nav--item.active a {
+  color: #9e7cb1;
+}
+.App-container .App .nav .nav--item:hover {
+  background-color: #251429;
+}
+.App-container .App .nav .nav--item:hover a {
+  color: #9e7cb1;
 }
 
 .Mainpage {
   display: flex;
   position: relative;
+  overflow: hidden;
 }
 .Mainpage .overlay {
   position: absolute;

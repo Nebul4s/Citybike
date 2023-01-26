@@ -35,6 +35,8 @@ body {
 }
 
 @import "./App";
+@import "./pages/CreateNewJourney";
+@import "./pages/ImportFromCsv";
 @import "./pages/Mainpage";
 @import "./components/filter/MultiSelectList";
 @import "./components/filter/RangeSlider";
