@@ -14,8 +14,6 @@ const MultiSelectList = ({
   setSelectLocationNameItems,
 }) => {
   const [locationNames, setLocationNames] = useState(null);
-  const [error, setError] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
 
   const handleListOpenStyles = (e) => {
     e.target.closest(".list--btn__container").classList.toggle("list--open");
@@ -67,17 +65,14 @@ const MultiSelectList = ({
   useEffect(() => {
     const getData = async () => {
       try {
-        setIsLoading(true);
         const res = await fetch(
           `http://localhost:5000/locations/getAll?fields=Nimi`
         );
-
         const json = await res.json();
 
         setLocationNames(json.data);
-        setIsLoading(false);
       } catch (err) {
-        setError(err);
+        console.log(err.message);
       }
     };
     getData();

@@ -39,6 +39,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 }
 .App-container .App {
   width: 140rem;
@@ -86,6 +87,36 @@ body {
 }
 .App-container .App .nav .nav--item:hover a {
   color: #9e7cb1;
+}
+
+.CreateNewJourney {
+  width: 100%;
+  height: 100%;
+  background-color: #251429;
+  overflow: hidden;
+}
+.CreateNewJourney h2 {
+  text-align: center;
+  padding: 2.4rem 0;
+  font-size: 2.4rem;
+  color: #c3d1e1;
+  border-bottom: 1px solid #c3d1e1;
+}
+.CreateNewJourney .container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.CreateNewJourney .container .JourneyForm {
+  flex: 0.5;
+}
+.CreateNewJourney .container .LocationForm {
+  flex: 0.5;
+}
+.CreateNewJourney .container .SelectCollection {
+  flex: 0.5;
 }
 
 .Mainpage {
@@ -1368,4 +1399,240 @@ body {
   width: 100%;
   text-align: center;
   transition: all 0.2s;
+}
+
+.JourneyForm {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+}
+.JourneyForm form {
+  width: 90%;
+}
+.JourneyForm form .form--flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2.4rem;
+}
+.JourneyForm form .form--flex .form--item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1.2rem;
+  width: 45%;
+}
+.JourneyForm form .form--flex .form--item span {
+  font-size: 1.8rem;
+  color: #c3d1e1;
+}
+.JourneyForm form .form--flex .form--item input {
+  padding: 0.6rem;
+  border-radius: 0.6rem;
+  background-color: #c3d1e1;
+  width: 100%;
+}
+.JourneyForm form .submit--filter__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 1.2rem 0;
+}
+.JourneyForm form .submit--filter__container button {
+  padding: 1.2rem 1.8rem;
+  font-size: 1.8rem;
+  color: #251429;
+  background-color: #9e7cb1;
+  border-radius: 1rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease-out;
+}
+.JourneyForm form .submit--filter__container button.clear {
+  background-color: #aa4a44;
+}
+.JourneyForm form .submit--filter__container button:hover {
+  background-color: #ecb446;
+  transform: translateY(1px);
+  border-radius: 0;
+}
+.JourneyForm form .submit--container {
+  padding: 1.2rem 0;
+}
+.JourneyForm form .submit--container .submit--btn__container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+}
+.JourneyForm form .submit--container .submit--btn__container button {
+  width: 50%;
+  padding: 1.2rem 1.8rem;
+  font-size: 1.8rem;
+  color: #251429;
+  background-color: #9e7cb1;
+  border-radius: 1rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease-out;
+}
+.JourneyForm form .submit--container .submit--btn__container button.clear {
+  background-color: #aa4a44;
+}
+.JourneyForm form .submit--container .submit--btn__container button:hover {
+  background-color: #ecb446;
+  transform: translateY(1px);
+  border-radius: 0;
+}
+
+.LocationForm {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+.LocationForm form {
+  width: 90%;
+}
+.LocationForm form .form--flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2.4rem;
+}
+.LocationForm form .form--flex .form--item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1.2rem;
+  width: 45%;
+}
+.LocationForm form .form--flex .form--item span {
+  font-size: 1.8rem;
+  color: #c3d1e1;
+}
+.LocationForm form .form--flex .form--item input {
+  padding: 0.6rem;
+  border-radius: 0.6rem;
+  background-color: #c3d1e1;
+  width: 100%;
+}
+.LocationForm form .submit--filter__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 1.2rem 0;
+}
+.LocationForm form .submit--filter__container button {
+  padding: 1.2rem 1.8rem;
+  font-size: 1.8rem;
+  color: #251429;
+  background-color: #9e7cb1;
+  border-radius: 1rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease-out;
+}
+.LocationForm form .submit--filter__container button.clear {
+  background-color: #aa4a44;
+}
+.LocationForm form .submit--filter__container button:hover {
+  background-color: #ecb446;
+  transform: translateY(1px);
+  border-radius: 0;
+}
+.LocationForm form .submit--container {
+  padding: 1.2rem 0;
+}
+.LocationForm form .submit--container .submit--btn__container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+}
+.LocationForm form .submit--container .submit--btn__container button {
+  width: 50%;
+  padding: 1.2rem 1.8rem;
+  font-size: 1.8rem;
+  color: #251429;
+  background-color: #9e7cb1;
+  border-radius: 1rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease-out;
+}
+.LocationForm form .submit--container .submit--btn__container button.clear {
+  background-color: #aa4a44;
+}
+.LocationForm form .submit--container .submit--btn__container button:hover {
+  background-color: #ecb446;
+  transform: translateY(1px);
+  border-radius: 0;
+}
+
+.SelectCollection {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border-right: 1px solid #c3d1e1;
+  width: 100%;
+  height: 100%;
+}
+.SelectCollection p {
+  font-size: 1.8rem;
+  color: #c3d1e1;
+  width: 80%;
+  padding: 2.4rem;
+}
+.SelectCollection .collections--container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7.8rem;
+}
+.SelectCollection .collections--container .collection--container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1.8rem;
+  background-color: #c3d1e1;
+  width: 18.8rem;
+  height: 18.8rem;
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+}
+.SelectCollection .collections--container .collection--container span {
+  font-size: 1.8rem;
+  color: #251429;
+}
+.SelectCollection .collections--container .collection--container svg {
+  fill: #251429;
+}
+.SelectCollection .collections--container .collection--container.active {
+  background-color: #9e7cb1;
+  transform: translateY(3px);
+}
+.SelectCollection .collections--container .collection--container.active span {
+  color: #ecb446;
+}
+.SelectCollection .collections--container .collection--container.active svg {
+  fill: #ecb446;
+}
+.SelectCollection .collections--container .collection--container:hover {
+  background-color: #9e7cb1;
+  transform: translateY(3px);
+}
+.SelectCollection .collections--container .collection--container:hover span {
+  color: #ecb446;
+}
+.SelectCollection .collections--container .collection--container:hover svg {
+  fill: #ecb446;
 }/*# sourceMappingURL=index.css.map */

@@ -85,3 +85,21 @@ exports.search = async (req, res) => {
     });
   }
 };
+
+exports.createNewJourney = async (req, res) => {
+  try {
+    const newJourney = await Journey.create(req.body);
+
+    res.status(201).send({
+      status: "ok",
+      data: {
+        journey: newJourney,
+      },
+    });
+  } catch (err) {
+    res.status(400).send({
+      status: "Failed",
+      message: err,
+    });
+  }
+};

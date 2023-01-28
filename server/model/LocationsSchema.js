@@ -3,12 +3,15 @@ const mongoose = require("mongoose");
 const locationsSchema = new mongoose.Schema({
   FID: {
     type: Number,
+    unique: true,
   },
   ID: {
     type: Number,
+    unique: true,
   },
   Nimi: {
     type: String,
+    unique: true,
   },
   Namn: {
     type: String,
@@ -18,6 +21,7 @@ const locationsSchema = new mongoose.Schema({
   },
   Osoite: {
     type: String,
+    unique: true,
   },
   Adress: {
     type: String,
@@ -36,9 +40,11 @@ const locationsSchema = new mongoose.Schema({
   },
   x: {
     type: String,
+    unique: true,
   },
   y: {
     type: String,
+    unique: true,
   },
 });
 

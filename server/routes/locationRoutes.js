@@ -10,5 +10,6 @@ router
   .get(locationController.getLocationStats);
 router.route("/getMinMax").get(locationController.getMinAndMax);
 router.route("/search").get(locationController.search);
+router.route("/createNew").post(locationController.createNewLocation);
 
 module.exports = router;

@@ -6,5 +6,6 @@ const router = express.Router();
 router.route("/getAll").get(journeyController.getAllJourneys);
 router.route("/getMinMax").get(journeyController.getMinAndMax);
 router.route("/search").get(journeyController.search);
+router.route("/createNew").post(journeyController.createNewJourney);
 
 module.exports = router;

@@ -1,0 +1,84 @@
+@import "../../Variables";
+@import "../../Mixins";
+
+.JourneyForm {
+  @include flexCenter;
+  flex-direction: column;
+  width: 100%;
+
+  form {
+    width: 90%;
+    .form--flex {
+      @include flexSpaceBetween;
+      margin-bottom: 2.4rem;
+      .form--item {
+        @include flexCenter;
+        flex-direction: column;
+        gap: 1.2rem;
+        width: 45%;
+
+        span {
+          font-size: 1.8rem;
+          color: $color1;
+        }
+        input {
+          padding: 0.6rem;
+          border-radius: 0.6rem;
+          background-color: $color1;
+          width: 100%;
+        }
+      }
+    }
+    .submit--filter__container {
+      @include flexSpaceEvenly;
+      padding: 1.2rem 0;
+      button {
+        padding: 1.2rem 1.8rem;
+        font-size: 1.8rem;
+        color: $color5;
+        background-color: $color3;
+        border-radius: 1rem;
+        border: none;
+        cursor: pointer;
+        transition: all 0.2s ease-out;
+        &.clear {
+          background-color: #aa4a44;
+        }
+        &:hover {
+          background-color: $color2;
+          transform: translateY(1px);
+          border-radius: 0;
+        }
+      }
+    }
+    .submit--container {
+      padding: 1.2rem 0;
+      .submit--btn__container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-end;
+
+        button {
+          width: 50%;
+          padding: 1.2rem 1.8rem;
+          font-size: 1.8rem;
+          color: $color5;
+          background-color: $color3;
+          border-radius: 1rem;
+          border: none;
+          cursor: pointer;
+          transition: all 0.2s ease-out;
+          &.clear {
+            background-color: #aa4a44;
+          }
+          &:hover {
+            background-color: $color2;
+            transform: translateY(1px);
+            border-radius: 0;
+          }
+        }
+      }
+    }
+  }
+}

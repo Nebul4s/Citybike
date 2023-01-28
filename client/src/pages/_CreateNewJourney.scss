@@ -1,0 +1,30 @@
+@import "../Variables";
+@import "../Mixins";
+
+.CreateNewJourney {
+  width: 100%;
+  height: 100%;
+  background-color: $color5;
+  overflow: hidden;
+  h2 {
+    text-align: center;
+    padding: 2.4rem 0;
+    font-size: 2.4rem;
+    color: $color1;
+    border-bottom: 1px solid $color1;
+  }
+  .container {
+    height: 100%;
+    width: 100%;
+    @include flexSpaceBetween;
+    .JourneyForm {
+      flex: 0.5;
+    }
+    .LocationForm {
+      flex: 0.5;
+    }
+    .SelectCollection {
+      flex: 0.5;
+    }
+  }
+}

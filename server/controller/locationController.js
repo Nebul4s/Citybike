@@ -188,3 +188,39 @@ exports.search = async (req, res) => {
     });
   }
 };
+
+exports.createNewLocation = async (req, res) => {
+  try {
+    const getId = await Location.aggregate([
+      {
+        $group: {
+          _id: null,
+          maxID: { $max: "$ID" },
+          maxFID: { $max: "$FID" },
+        },
+      },
+    ]);
+
+    console.log(getId);
+
+    const data = {
+      FID: (getId[0].maxFID += 1),
+      ID: (getId[0].maxID += 1),
+      ...req.body,
+    };
+    const newLocation = await Location.create(data);
+    console.log(newLocation);
+
+    res.status(201).send({
+      status: "ok",
+      data: {
+        location: newLocation,
+      },
+    });
+  } catch (err) {
+    res.status(400).send({
+      status: "Failed",
+      message: err,
+    });
+  }
+};
