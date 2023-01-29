@@ -1,6 +1,7 @@
 # Helsinki Citybike
 
-This project has a node server serving data about the journeys made and pick-up locations of Helsinki Citybike users from mondodb to a react client where the data is displayed by listing all the journeys and locations on separate tabs and when item is selected showing the departure and return station or the pick-up location on the map and displaying details about the journey or the location.
+This project has a node.js backend serving data about the journeys/locations of Helsinki Citybike from mondodb to a react client where the data is displayed by listing all the journeys and locations on separate tabs and when item is selected showing the departure and return station or the pick-up location on the map and displaying details about the journey or the location.
+User can narrow down the lists by searching or filtering the data in the client.
 
 User can also enter in new journeys/locations through a form or import journeydata from csv files
 
