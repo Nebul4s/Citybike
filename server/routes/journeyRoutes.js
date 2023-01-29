@@ -3,9 +3,15 @@ const journeyController = require("../controller/journeyController");
 
 const router = express.Router();
 
-router.route("/getAll").get(journeyController.getAllJourneys);
-router.route("/getMinMax").get(journeyController.getMinAndMax);
-router.route("/search").get(journeyController.search);
-router.route("/createNew").post(journeyController.createNewJourney);
+router.get("/getAll", journeyController.getAllJourneys);
+router.get("/getMinMax", journeyController.getMinAndMax);
+router.get("/search", journeyController.search);
+
+router.post("/createNew", journeyController.createNewJourney);
+router.post(
+  "/upload",
+  journeyController.uploadSingleFile,
+  journeyController.uploadFile
+);
 
 module.exports = router;

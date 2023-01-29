@@ -1,5 +1,32 @@
 const Journey = require("../model/JourneySchema");
 const Features = require("../utils/features");
+const multer = require("multer");
+const convertAndImportToDatabase = require("../convertCsv/convertCsv");
+
+const multerStorage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "convertCsv/files");
+  },
+  filename: (req, file, cb) => {
+    const ext = file.mimetype.split("/")[1];
+    cb(null, `file-${Date.now()}.${ext}`);
+  },
+});
+
+const multerFilter = (req, file, cb) => {
+  if (file.mimetype.endsWith("csv")) {
+    cb(null, true);
+  } else {
+    cb(new Error("Not a csv file!, Only csv files are allowed", 400), false);
+  }
+};
+
+const upload = multer({
+  storage: multerStorage,
+  fileFilter: multerFilter,
+});
+
+exports.uploadSingleFile = upload.single("file");
 
 exports.getAllJourneys = async (req, res) => {
   try {
@@ -102,4 +129,9 @@ exports.createNewJourney = async (req, res) => {
       message: err,
     });
   }
+};
+
+exports.uploadFile = async (req, res, next) => {
+  convertAndImportToDatabase(req.file.filename);
+  next();
 };

@@ -8,7 +8,7 @@ const Journey = require("../model/JourneySchema");
 const dotenv = require("dotenv");
 const bufferingObjectStream = require("buffering-object-stream");
 
-const convertAndImportToDatabase = async () => {
+const convertAndImportToDatabase = async (filename) => {
   dotenv.config({ path: "../config.env" });
   const collection = "journeys";
   const DB = process.env.DATABASE.replace("<password>", process.env.PASSWORD);
@@ -17,8 +17,9 @@ const convertAndImportToDatabase = async () => {
   mongoose.connect(DB, () => {
     console.log("DB connection success");
   });
+  console.log(filename);
 
-  const readStream = fs.createReadStream("./2021-07.csv");
+  const readStream = fs.createReadStream(`${__dirname}/files/${filename}`);
 
   const filter = new Transform({
     objectMode: true,
@@ -97,4 +98,4 @@ const convertAndImportToDatabase = async () => {
   }
 };
 
-convertAndImportToDatabase();
+module.exports = convertAndImportToDatabase;
