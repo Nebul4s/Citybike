@@ -6,12 +6,26 @@
   height: 100%;
   background-color: $color5;
   overflow: hidden;
+  overflow-y: auto;
   h2 {
     text-align: center;
     padding: 2.4rem 0;
     font-size: 2.4rem;
     color: $color1;
     border-bottom: 1px solid $color1;
+  }
+  .mobile--select__collection {
+    display: none;
+    span {
+      font-size: 1.8rem;
+      color: $color1;
+    }
+    select {
+      padding: 1.2rem;
+      background: none;
+      border: none;
+      background-color: $color1;
+    }
   }
   .container {
     height: 100%;
@@ -25,6 +39,23 @@
     }
     .SelectCollection {
       flex: 0.5;
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .CreateNewJourney {
+    .container {
+      display: block;
+      .SelectCollection {
+        display: none;
+      }
+    }
+    .mobile--select__collection {
+      @include flexCenter;
+      padding-top: 1.2rem;
+      flex-direction: column;
+      gap: 1.2rem;
     }
   }
 }

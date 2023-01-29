@@ -55,3 +55,17 @@
     }
   }
 }
+@media (max-height: 750px) and (max-width: 750px) {
+  .App-container {
+    align-items: flex-end;
+    .App {
+      height: 92%;
+      .nav {
+        width: 100%;
+        .nav--item {
+          width: 25%;
+        }
+      }
+    }
+  }
+}

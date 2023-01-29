@@ -37,6 +37,13 @@ const CreateNewJourney = () => {
         {!isLoading && (
           <>
             <SelectCollection setCreateInCollection={setCreateInCollection} />
+            <div className="mobile--select__collection">
+              <span>Select Collection</span>
+              <select onChange={(e) => setCreateInCollection(e.target.value)}>
+                <option value="journeys">Journey Form</option>
+                <option value="locations">Location Form</option>
+              </select>
+            </div>
             {createInCollection === "journeys" && (
               <JourneyForm locationNames={locationNames} />
             )}

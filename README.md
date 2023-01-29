@@ -37,3 +37,7 @@ Running the client in a new terminal window
 ## Known Issues
 
 - In the filter a oneway slider component will give an error about the input being changed from controlled to uncontrolled
+
+## Upcoming features
+
+- Statistics view that contains general statistics like top 5 most popular stations etc.
