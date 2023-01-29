@@ -17,7 +17,6 @@ const convertAndImportToDatabase = async (filename) => {
   mongoose.connect(DB, () => {
     console.log("DB connection success");
   });
-  console.log(filename);
 
   const readStream = fs.createReadStream(`${__dirname}/files/${filename}`);
 
@@ -92,7 +91,6 @@ const convertAndImportToDatabase = async (filename) => {
       saveItemsToDb
     );
     console.log("Stream finished");
-    process.exit();
   } catch (error) {
     console.log("Stream ended with error ", error);
   }

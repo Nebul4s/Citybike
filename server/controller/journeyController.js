@@ -131,7 +131,18 @@ exports.createNewJourney = async (req, res) => {
   }
 };
 
-exports.uploadFile = async (req, res, next) => {
-  convertAndImportToDatabase(req.file.filename);
-  next();
+exports.uploadFile = async (req, res) => {
+  try {
+    await convertAndImportToDatabase(req.file.filename);
+
+    res.status(201).send({
+      status: "ok",
+      message: "Data succesfully imported",
+    });
+  } catch (err) {
+    res.status(400).send({
+      status: "Failed",
+      message: err.message,
+    });
+  }
 };

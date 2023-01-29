@@ -2,7 +2,7 @@
 
 This project has a node server serving data about the journeys made and pick-up locations of Helsinki Citybike users from mondodb to a react client where the data is displayed by listing all the journeys and locations on separate tabs and when item is selected showing the departure and return station or the pick-up location on the map and displaying details about the journey or the location.
 
-User can also enter in new journeys/locations through a form
+User can also enter in new journeys/locations through a form or import journeydata from csv files
 
 ## How to install and run this project
 
@@ -36,7 +36,3 @@ Running the client in a new terminal window
 ## Known Issues
 
 - In the filter a oneway slider component will give an error about the input being changed from controlled to uncontrolled
-
-## Features coming soon
-
-- Importing new journeys and locations from csv file to mongoDB

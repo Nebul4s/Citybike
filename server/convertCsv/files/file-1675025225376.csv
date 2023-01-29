@@ -1,0 +1,9 @@
+﻿Departure,Return,Departure station id,Departure station name,Return station id,Return station name,Covered distance (m),Duration (sec.)
+2021-05-31T23:57:25,2021-06-01T00:05:46,094,TEST Upload data,100,TEST Upload data,2043,500
+2021-05-31T23:56:59,2021-06-01T00:07:14,082,TEST Upload data,113,TEST Upload data TEST Upload data,1870,611
+2021-05-31T23:56:44,2021-06-01T00:03:26,123,TEST Upload data,121,TEST Upload data,1025,399
+2021-05-31T23:56:23,2021-06-01T00:29:58,004,TEST Upload data,065,TEST Upload data,4318,2009
+2021-05-31T23:56:11,2021-06-01T00:02:02,004,TEST Upload data,065,TEST Upload data,1400,350
+2021-05-31T23:54:48,2021-06-01T00:00:57,292,TEST Upload data TEST Upload data,133,TEST Upload data,1713,366
+2021-05-31T23:54:11,2021-06-01T00:17:11,034,TEST Upload data,081,TEST Upload data,2550,1377
+2021-05-31T23:53:04,2021-06-01T00:14:52,240,TEST Upload data TEST Upload data,281,TEST Upload data (M),5366,1304

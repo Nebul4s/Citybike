@@ -119,6 +119,85 @@ body {
   flex: 0.5;
 }
 
+.ImportFromCsv {
+  background-color: #251429;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1.8rem;
+}
+.ImportFromCsv .dropzone {
+  width: 90%;
+  height: 90%;
+  border: 1px solid #c3d1e1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 2.4rem;
+}
+.ImportFromCsv .dropzone .preview--files {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 2.4rem;
+}
+.ImportFromCsv .dropzone .preview--files .file--box {
+  background-color: #c3d1e1;
+  width: 12.4rem;
+  height: 12.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.ImportFromCsv .dropzone .preview--files .file--box span {
+  font-size: 1.8rem;
+  color: #251429;
+}
+.ImportFromCsv .dropzone h2 {
+  font-size: 2.4rem;
+  color: #c3d1e1;
+}
+.ImportFromCsv .dropzone button {
+  border: none;
+  background: none;
+  background-color: #ecb446;
+  padding: 1.8rem 2.4rem;
+  font-size: 1.8rem;
+  color: #251429;
+  cursor: pointer;
+  transition: all 0.2s ease-out;
+}
+.ImportFromCsv .dropzone button:hover {
+  background-color: #9e7cb1;
+  color: #ecb446;
+  transform: translateY(3px);
+}
+.ImportFromCsv .submit--container {
+  display: grid;
+  width: 90%;
+}
+.ImportFromCsv .submit--container .submit--upload__btn {
+  justify-self: flex-end;
+  border: none;
+  background: none;
+  background-color: #ecb446;
+  color: #251429;
+  padding: 1.2rem 1.8rem;
+  font-size: 1.8rem;
+  cursor: pointer;
+  transition: all 0.2s ease-out;
+}
+.ImportFromCsv .submit--container .submit--upload__btn:hover {
+  background-color: #9e7cb1;
+  color: #ecb446;
+}
+
 .Mainpage {
   display: flex;
   position: relative;
@@ -1619,6 +1698,7 @@ body {
 .SelectCollection .collections--container .collection--container.active {
   background-color: #9e7cb1;
   transform: translateY(3px);
+  box-shadow: 0rem 0.5rem 0.5rem black;
 }
 .SelectCollection .collections--container .collection--container.active span {
   color: #ecb446;
@@ -1629,6 +1709,7 @@ body {
 .SelectCollection .collections--container .collection--container:hover {
   background-color: #9e7cb1;
   transform: translateY(3px);
+  box-shadow: 0.2rem 0.5rem 0.8rem black;
 }
 .SelectCollection .collections--container .collection--container:hover span {
   color: #ecb446;

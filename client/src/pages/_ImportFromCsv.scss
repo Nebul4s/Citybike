@@ -1,2 +1,73 @@
 @import "../Variables";
 @import "../Mixins";
+
+.ImportFromCsv {
+  background-color: $color5;
+  width: 100%;
+  height: 100%;
+  @include flexCenter;
+  flex-direction: column;
+  gap: 1.8rem;
+  .dropzone {
+    width: 90%;
+    height: 90%;
+    border: 1px solid $color1;
+    @include flexCenter;
+    flex-direction: column;
+    gap: 2.4rem;
+    .preview--files {
+      @include flexCenter;
+      flex-direction: column;
+      gap: 2.4rem;
+      .file--box {
+        background-color: $color1;
+        width: 12.4rem;
+        height: 12.4rem;
+        @include flexCenter;
+        cursor: pointer;
+        span {
+          font-size: 1.8rem;
+          color: $color5;
+        }
+      }
+    }
+    h2 {
+      font-size: 2.4rem;
+      color: $color1;
+    }
+    button {
+      border: none;
+      background: none;
+      background-color: $color2;
+      padding: 1.8rem 2.4rem;
+      font-size: 1.8rem;
+      color: $color5;
+      cursor: pointer;
+      transition: all 0.2s ease-out;
+      &:hover {
+        background-color: $color3;
+        color: $color2;
+        transform: translateY(3px);
+      }
+    }
+  }
+  .submit--container {
+    display: grid;
+    width: 90%;
+    .submit--upload__btn {
+      justify-self: flex-end;
+      border: none;
+      background: none;
+      background-color: $color2;
+      color: $color5;
+      padding: 1.2rem 1.8rem;
+      font-size: 1.8rem;
+      cursor: pointer;
+      transition: all 0.2s ease-out;
+      &:hover {
+        background-color: $color3;
+        color: $color2;
+      }
+    }
+  }
+}

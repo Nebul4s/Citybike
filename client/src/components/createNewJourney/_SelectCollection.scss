@@ -26,6 +26,7 @@
       height: 18.8rem;
       cursor: pointer;
       transition: all 0.3s ease-out;
+
       span {
         font-size: 1.8rem;
         color: $color5;
@@ -36,6 +37,7 @@
       &.active {
         background-color: $color3;
         transform: translateY(3px);
+        box-shadow: 0rem 0.5rem 0.5rem black;
         span {
           color: $color2;
         }
@@ -46,6 +48,7 @@
       &:hover {
         background-color: $color3;
         transform: translateY(3px);
+        box-shadow: 0.2rem 0.5rem 0.8rem black;
         span {
           color: $color2;
         }
